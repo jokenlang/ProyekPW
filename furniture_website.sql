@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2021 at 11:56 AM
+-- Generation Time: Nov 06, 2021 at 12:25 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS `produk` (
   `nama_produk` varchar(30) NOT NULL,
   `desc_produk` varchar(100) DEFAULT NULL,
   `harga_produk` int(11) NOT NULL,
+  `stok_produk` int(11) NOT NULL,
   `kode_kategori` int(11) NOT NULL,
   PRIMARY KEY (`kode_produk`),
   KEY `kode_kategori` (`kode_kategori`)
