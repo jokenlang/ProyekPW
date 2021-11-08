@@ -1,0 +1,217 @@
+* {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+a{
+    color: #17181c;
+}
+/* scam */
+:root {
+	--dur: 3s;
+	--bg: #e3e4e8;
+	--fg: #17181c;
+	font-size: calc(12px + (24 - 12)*(100vw - 320px)/(2560 - 320));
+}
+body {
+	background: var(--bg);
+	color: var(--fg);
+	/* display: flex; */
+	font: 1em/1.5 sans-serif;
+	height: 100vh;
+	overflow: hidden;
+}
+.preloader, .box, .box__inner, .box__inner div  {
+	transform-style: preserve-3d;
+}
+.preloader {
+	z-index: 10;
+	margin: auto;
+	position: relative;
+	width: 12em;
+	height: 24em;
+}
+.box, .box__inner, .box__inner div, .line {
+	position: absolute;
+}
+.box, .box__inner div, .line__inner  {
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+}
+.box, .line__inner {
+	animation-duration: var(--dur);
+}
+.box__inner div, .line__inner {
+	background: var(--fg);
+}
+/* Boxes */
+.box, .box__inner {
+	width: 100%;
+	height: 50%;
+}
+.box {
+	animation-name: popOut;
+	top: 50%;
+	perspective: 25em;
+	transform-origin: 50% 75%;
+	z-index: 1;
+}
+/* .box + .box {
+	animation-delay: calc(var(--dur)/-2);
+} */
+.box__inner, .box__inner div  {
+	/* animation-delay: inherit; */
+	animation-duration: inherit;
+}
+.box__inner {
+	transform: rotateX(50deg);
+	transform-origin: 50% 25%;
+}
+.box__inner div {
+	box-shadow: 0 0 0 0.2em var(--bg) inset;
+}
+.box__back-flap, .box__front-flap, .box__front {
+	width: 6em;
+}
+.box__left-flap, .box__right-flap, .box__front {
+	height: 6em;
+}
+.box__back-flap, .box__front-flap {
+	left: 3em;
+	height: 3em;
+}
+.box__left-flap, .box__right-flap {
+	top: 3em;
+	width: 3em;
+}
+.box__back-flap {
+	animation-name: backFlap;
+	transform: rotateX(-180deg);
+	transform-origin: 50% 100%;
+}
+.box__right-flap {
+	animation-name: rightFlap;
+	left: 9em;
+	transform: rotateY(-179deg);
+	transform-origin: 0 50%;
+}
+.box__front-flap {
+	animation-name: frontFlap;
+	top: 9em;
+	transform: rotateX(180deg);
+	transform-origin: 50% 0;
+}
+.box__left-flap {
+	animation-name: leftFlap;
+	transform: rotateY(179deg);
+	transform-origin: 100% 50%;
+}
+.box__front {
+	top: 3em;
+	left: 3em;
+	transform: rotateX(-90deg) translateY(50%) translateZ(3em);
+}
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #17181c;
+		--fg: #e3e4e8;
+	}
+}
+/* Animations */
+@keyframes backFlap {
+	from, 33% { transform: rotateX(-180deg); }
+	41% { transform: rotateX(10deg); }
+	45% { transform: rotateX(-27deg); }
+	50%, to { transform: rotateX(-15deg); }
+}
+@keyframes rightFlap {
+	from, 33% { transform: rotateY(-179deg); }
+	41% { transform: rotateY(10deg); }
+	45% { transform: rotateY(-27deg); }
+	50%, to { transform: rotateY(-15deg); }
+}
+@keyframes frontFlap {
+	from, 33% { transform: rotateX(180deg); }
+	41% { transform: rotateX(-10deg); }
+	45% { transform: rotateX(27deg); }
+	50%, to { transform: rotateX(15deg); }
+}
+@keyframes leftFlap {
+	from, 33% { transform: rotateY(179deg); }
+	41% { transform: rotateY(-10deg); }
+	45% { transform: rotateY(27deg); }
+	50%, to { transform: rotateY(15deg); }
+}
+@keyframes popOut {
+	from, 21% { transform: translateZ(1px) translateY(0) scale(0,0); }
+	33% { transform: translateZ(1px) translateY(-100%) scale(0.75,1.5); }
+	41% { transform: translateZ(1px) translateY(-100%) scale(1,1); }
+	42%,50% { transform: translateZ(0) translateY(-100%) scale(1,1); }
+	55% { transform: translateZ(0) translateY(-100%) scale(0.75,1.5); }
+	60% { transform: translateZ(0) translateY(0) scale(1.5,0.75); }
+	67% { transform: translateZ(0) translateY(0) scale(1,1); }
+	to { transform: translateZ(0) translateY(0) scale(0,0); }
+}
+@keyframes falling {
+	from, 12% { transform: translateY(0%); }
+	28%, to { transform: translateY(100%); }
+}
+@keyframes landing {
+	from, 17% { transform: translateY(-100%); }
+	41%, to { transform: translateY(100%); }
+}
+
+/* button */
+
+.button {
+	z-index: 10;
+    border-radius: 4px;
+    background-color: #17181C;
+    border: none;
+    color: #17181C;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 10vw;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    /* flex-direction: row; */
+    margin-left: 25%;
+    /* margin-right: 45%; */
+    margin-bottom: 10vw;
+}
+  
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+  
+.button span:after {
+    color: white;
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+  
+.button:hover span {
+    text-decoration: underline;
+    color: white;
+    padding-right: 25px;
+}
+  
+.button:hover span:after {
+    color: white;
+    opacity: 1;
+    right: 0;
+}
+
+
+  
