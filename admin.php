@@ -1,7 +1,19 @@
 <?php
 require_once('connection.php');
 $kategori = $conn->query("SELECT * From kategori")->fetch_all(MYSQLI_ASSOC);
-$produk = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASSOC);
+
+//pagination
+$jumlahDataperHal = 1;
+$res = mysqli_query($conn, "select * from produk");
+$jumlahData = mysqli_num_rows($res);
+$jumlahHal = ceil($jumlahData / $jumlahDataperHal);
+if (isset($_GET['hal'])) {
+    $halAktif = $_GET['hal'];
+} else {
+    $halAktif = 1;
+}
+$awalData = ($jumlahDataperHal * $halAktif) - $jumlahDataperHal;
+$produk = $conn->query("SELECT * From produk LIMIT $awalData,$jumlahDataperHal")->fetch_all(MYSQLI_ASSOC);
 
 if (isset($_POST['addProduct'])) {
     $nama = $_POST['nama'];
@@ -52,6 +64,10 @@ if (isset($_POST['addProduct'])) {
         table tr td img {
             width: 100px;
             height: 100px;
+        }
+
+        span {
+            margin: 20px;
         }
     </style>
 </head>
@@ -105,8 +121,8 @@ if (isset($_POST['addProduct'])) {
             <td>Harga</td>
             <td>Gambar</td>
         </tr>
-        <tr>
-            <?php foreach ($produk as $key => $val) { ?>
+        <?php foreach ($produk as $key => $val) { ?>
+            <tr>
                 <td><?= strtoupper($val['nama_produk']) ?></td>
                 <td>
                     <?php
@@ -120,9 +136,20 @@ if (isset($_POST['addProduct'])) {
                 <td><?= $val['desc_produk'] ?></td>
                 <td>Rp. <?= number_format($val['harga_produk'], 00, ',', '.') ?></td>
                 <td><img src="<?= $val['url_gambar'] ?>" alt=""></td>
-            <?php } ?>
-        </tr>
+            </tr>
+        <?php } ?>
     </table>
+
+    <!-- Navigasi -->
+    <?php for ($i = 1; $i <= $jumlahHal; $i++) { ?>
+        <span>
+            <?php if ($i == $halAktif) { ?>
+                <a href="?hal=<?= $i ?>" style="color: red;"><?= $i ?></a>
+            <?php } else { ?>
+                <a href="?hal=<?= $i ?>"><?= $i ?></a>
+            <?php } ?>
+        </span>
+    <?php } ?>
 
     <script>
         $("#kategori").change(function() {

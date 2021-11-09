@@ -60,8 +60,8 @@ if (isset($_POST['searchName'])) {
             <td>Harga</td>
             <td>Gambar</td>
         </tr>
-        <tr>
-            <?php foreach ($listProduk as $key => $val) { ?>
+        <?php foreach ($listProduk as $key => $val) { ?>
+            <tr>
                 <td><?= strtoupper($val['nama_produk']) ?></td>
                 <td>
                     <?php
@@ -75,8 +75,8 @@ if (isset($_POST['searchName'])) {
                 <td><?= $val['desc_produk'] ?></td>
                 <td>Rp. <?= number_format($val['harga_produk'], 00, ',', '.') ?></td>
                 <td><img src="<?= $val['url_gambar'] ?>" alt=""></td>
-            <?php } ?>
-        </tr>
+            </tr>
+        <?php } ?>
     </table>
 
     <div class="tempat"></div>
