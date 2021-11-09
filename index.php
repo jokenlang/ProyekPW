@@ -1,5 +1,7 @@
 <?php
 require_once('connection.php');
+$listUser = $conn->query("SELECT * From user")->fetch_all(MYSQLI_ASSOC);
+
 if (isset($_POST['register'])) {
     header('Location: register.php');
 }
@@ -9,6 +11,17 @@ if (isset($_POST['login'])) {
     $password = $_POST['password'];
     if ($username == "admin" && $password == "admin") {
         header('Location:admin.php');
+    } else {
+        $idxUser = -1;
+        foreach ($listUser as $key => $val) {
+            if ($username == $val['username_user'] && $password == $val['password_user']) {
+                $idxUser = $val['kode_user'];
+            }
+        }
+        if ($idxUser != -1) {
+            header('Location:user.php');
+            $_SESSION['idxUser'] = $idxUser;
+        }
     }
 }
 
