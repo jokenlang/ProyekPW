@@ -25,8 +25,9 @@ if (isset($_POST['register'])) {
     } else if ($username == "" || $confirm == "" || $password == "" || $email == "" || $nama == "") {
         alert('Semua Field harus diisi');
     } else {
-        $stmt = $conn->prepare("INSERT INTO `user` (`kode_user`, `username_user`, `password_user`, `nama_user`, `email_user`) VALUES ('', ?,?,?,?)");
-        $stmt->bind_param("ssss", $username, $password, $nama, $email);
+        $saldo = 1000000;
+        $stmt = $conn->prepare("INSERT INTO `user` (`kode_user`, `username_user`, `password_user`, `nama_user`, `email_user`,`saldo_user`) VALUES ('', ?,?,?,?,?)");
+        $stmt->bind_param("ssssi", $username, $password, $nama, $email, $saldo);
         $result = $stmt->execute();
         if ($result) {
             alert('Berhasil Register');
