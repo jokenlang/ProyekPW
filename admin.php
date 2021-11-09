@@ -114,7 +114,7 @@ if (isset($_POST['addProduct'])) {
                     $stmt = $conn->query("SELECT * FROM jenis WHERE kode_jenis='$kode_jenis'");
                     $jenis = $stmt->fetch_assoc();
                     ?>
-                    <?= $jenis['kode_jenis'] ?>
+                    <?= $jenis['nama_jenis'] ?>
                 </td>
                 <td><?= $val['stok_produk'] ?></td>
                 <td><?= $val['desc_produk'] ?></td>
