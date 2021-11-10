@@ -48,6 +48,9 @@ if (isset($_POST['searchName'])) {
 
     <div class="form-group">
         <input type="text" name="search_box" id="search_box" class="form-control" placeholder="Search by Name" />
+        <br>
+        <input type="text" name="search_min" id="search_min" class="form-control" placeholder="Min" />
+        <input type="text" name="search_max" id="search_max" class="form-control" placeholder="Max" />
     </div>
 
     <!-- <h1>Search by harga</h1>
@@ -96,13 +99,15 @@ if (isset($_POST['searchName'])) {
 
             load_data(1);
 
-            function load_data(page, query = '') {
+            function load_data(page, query = '', min = '', max = '') {
                 $.ajax({
                     url: "fetch.php",
                     method: "POST",
                     data: {
                         page: page,
-                        query: query
+                        query: query,
+                        min: min,
+                        max: max
                     },
                     success: function(data) {
                         $('#dynamic_content').html(data);
@@ -113,12 +118,31 @@ if (isset($_POST['searchName'])) {
             $(document).on('click', '.page-link', function() {
                 var page = $(this).data('page_number');
                 var query = $('#search_box').val();
-                load_data(page, query);
+                var min = $('#search_min').val();
+                var max = $('#search_max').val();
+                load_data(page, query, min, max);
             });
 
             $('#search_box').keyup(function() {
                 var query = $('#search_box').val();
-                load_data(1, query);
+                var min = $('#search_min').val();
+                var max = $('#search_max').val();
+                load_data(1, query, min, max);;
+            });
+
+
+            $('#search_min').keyup(function() {
+                var query = $('#search_box').val();
+                var min = $('#search_min').val();
+                var max = $('#search_max').val();
+                load_data(1, query, min, max);
+            });
+
+            $('#search_max').keyup(function() {
+                var query = $('#search_box').val();
+                var min = $('#search_min').val();
+                var max = $('#search_max').val();
+                load_data(1, query, min, max);;
             });
 
         });
