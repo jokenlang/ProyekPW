@@ -11,6 +11,8 @@ if (isset($_POST['searchName'])) {
     $hasil = mysqli_query($conn, $query);
 }
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +23,8 @@ if (isset($_POST['searchName'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <script src="jquery-3.4.1.min.js"></script>
     <style>
         table tr td {
             border: 1px solid black;
@@ -35,22 +39,27 @@ if (isset($_POST['searchName'])) {
 
 <body>
     <h1>Welcome, <?= $user['nama_user'] ?></h1>
+    <br>
 
-    <form action="" method="post">
+    <!-- <form action="" method="post">
         Search by name : <input type="text" name="keyword" id="keyword" onkeyup="searching();">
         <button value="search" name="searchName">Search by Name</button>
-    </form>
+    </form> -->
 
-    <h1>Search by harga</h1>
+    <div class="form-group">
+        <input type="text" name="search_box" id="search_box" class="form-control" placeholder="Search by Name" />
+    </div>
+
+    <!-- <h1>Search by harga</h1>
     <form action="" method="post">
         Min : <input type="text" name="min" id="min">
         Max : <input type="text" name="max" id="max">
         <button value="search" name="searchHarga">Search by Harga</button>
-    </form>
+    </form> -->
 
     <h1>List Product</h1>
     <br>
-
+    <!-- 
     <table>
         <tr>
             <td>Nama</td>
@@ -77,23 +86,44 @@ if (isset($_POST['searchName'])) {
                 <td><img src="<?= $val['url_gambar'] ?>" alt=""></td>
             </tr>
         <?php } ?>
-    </table>
+    </table> -->
 
-    <div class="tempat"></div>
+    <div class="table-responsive" id="dynamic_content">
+
+    </div>
     <script>
-        function searching() {
-            keyword = document.getElementById('keyword').value;
-            tempat = document.getElementsByClassName('tempat')[0];
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    alert(xhr.responseText);
-                }
+        $(document).ready(function() {
+
+            load_data(1);
+
+            function load_data(page, query = '') {
+                $.ajax({
+                    url: "fetch.php",
+                    method: "POST",
+                    data: {
+                        page: page,
+                        query: query
+                    },
+                    success: function(data) {
+                        $('#dynamic_content').html(data);
+                    }
+                });
             }
-            xhr.open('POST', 'search-user.php', true);
-            xhr.send(keyword);
-        }
+
+            $(document).on('click', '.page-link', function() {
+                var page = $(this).data('page_number');
+                var query = $('#search_box').val();
+                load_data(page, query);
+            });
+
+            $('#search_box').keyup(function() {
+                var query = $('#search_box').val();
+                load_data(1, query);
+            });
+
+        });
     </script>
+
 </body>
 
 </html>
