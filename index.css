@@ -1,0 +1,145 @@
+html{
+    /* background-color: black; */
+    font-size: xx-large;
+    background-color: rgba(255,255,255,0.5);
+    background-image: url("./asset/wallpaper.jpg");
+    backdrop-filter: blur(5px);
+    /* transform: scaleX(-1); */
+    /* filter: blur(8px); */
+}
+span{
+    font-size: xx-large;
+}
+.login{
+    padding: 10px 20px;
+    background-color: #24A0ED;
+    border: none;
+    border-radius: 10px;
+    color: whitesmoke;
+    margin-top: 10%;
+}
+.register{
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+}
+.cb {
+    clear: both;
+}
+
+.container{
+    width: 40vw;
+    height: 60vh;
+    /* margin-left: 40vw;
+    margin-right: 40vw; */
+    background-color: white;
+}
+h1{
+    text-align: center;
+}
+.bawah{
+    margin-top: 10%;
+    margin-left: 5%;
+}
+.atas{
+    margin: 0;padding: 0;
+}
+input[type=text]{
+    font-size: xx-large;
+    width: 90%;
+}
+input[type=password]{
+    font-size: xx-large;
+    width: 90%;
+}
+
+
+.register span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.register span:after {
+    color: black;
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.register:hover span {
+    text-decoration: underline;
+    color: black;
+    padding-right: 20px;
+    margin-left: 20%;
+}
+.register:hover span:after {
+    color: black;
+    opacity: 1;
+    right: 0;
+}
+
+.login span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.login span:after {
+    color: white;
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -0px;
+    transition: 0.5s;
+}
+.login:hover span {
+    text-decoration: underline;
+    color: white;
+    padding-right: 40px;
+    /* margin-left: 10%; */
+}
+.login:hover span:after {
+    color: white;
+    opacity: 1;
+    right: 0;
+}
+
+.atas .kiri{
+    float: left;
+    width: 84px;
+    height: 79px;
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-image: url("./asset/logo.png");
+    margin-left: 15%;
+}
+.atas .kanan{
+    float: left;
+    text-align: center;
+}
+.banner{
+    margin: auto;
+    margin-top: 20vh;
+    border: 1px solid black;
+    width: 80vw;
+    border-radius: 10px;
+    height: 60vh;
+    /* box-shadow: 0px 0px 40px 10px white; */
+}
+.banner .container{
+    border-radius: 0px 10px 10px 0px;
+    float: left;
+}
+.banner .bangunan{
+    border-radius: 10px 0px 0px 0px;
+    float: left;
+    width: 40vw;
+    height: 60vh;
+    background-image: url(./asset/gudang.png);
+}
