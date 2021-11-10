@@ -35,6 +35,14 @@ span{
     margin-right: 40vw; */
     background-color: white;
 }
+
+.container2{
+    width: 40vw;
+    height: 80vh;
+    /* margin-left: 40vw;
+    margin-right: 40vw; */
+    background-color: white;
+}
 h1{
     text-align: center;
 }
@@ -74,7 +82,7 @@ input[type=password]{
     text-decoration: underline;
     color: black;
     padding-right: 20px;
-    margin-left: 20%;
+    /* margin-left: 20%; */
 }
 .register:hover span:after {
     color: black;
@@ -132,6 +140,15 @@ input[type=password]{
     height: 60vh;
     /* box-shadow: 0px 0px 40px 10px white; */
 }
+.banner2{
+    margin: auto;
+    margin-top: 10vh;
+    border: 1px solid black;
+    width: 80vw;
+    border-radius: 10px;
+    height: 60vh;
+    /* box-shadow: 0px 0px 40px 10px white; */
+}
 .banner .container{
     border-radius: 0px 10px 10px 0px;
     float: left;
@@ -142,4 +159,19 @@ input[type=password]{
     width: 40vw;
     height: 60vh;
     background-image: url(./asset/gudang.png);
+}
+
+.banner2 .container2{
+    border-radius: 0px 10px 10px 0px;
+    float: left;
+}
+.banner2 .bangunan2{
+    border-radius: 10px 0px 0px 0px;
+    float: left;
+    width: 40vw;
+    height: 80vh;
+    background-image: url(./asset/rak.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* transform: scaleX(-1); */
 }

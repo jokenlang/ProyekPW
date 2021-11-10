@@ -51,25 +51,36 @@ if (isset($_POST['login'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    <h1>Register</h1>
-    <form action="" method="post">
-        Username : <input type="text" name="username" id="">
-        <br>
-        Nama : <input type="text" name="nama" id="">
-        <br>
-        Password : <input type="text" name="password" id="">
-        <br>
-        Confirm Password : <input type="text" name="confirm" id="">
-        <br>
-        Email : <input type="text" name="email" id="">
-        <br>
-        <input type="submit" value="Register" name="register">
-        <br>
-        <button value="login" name="login">Login</button>
-    </form>
+    <div class="banner2">
+        <div class="bangunan2"></div>
+        <div class="container2">
+            <div class="atas">
+                <h1>Register</h1>
+            </div>
+            <div class="cb"></div>
+            <div class="bawah">
+
+                <form action="" method="post">
+                    Username : <input type="text" name="username" id="">
+                    <br>
+                    Nama : <input type="text" name="nama" id="">
+                    <br>
+                    Password : <input type="text" name="password" id="">
+                    <br>
+                    Confirm Password : <input type="text" name="confirm" id="">
+                    <br>
+                    Email : <input type="text" name="email" id="">
+                    <br>
+                    <button =value="Register" name="register" class="register"><Span>Register</Span></button>
+                    <button value="login" name="login" class="login"><Span>Login</Span></button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
