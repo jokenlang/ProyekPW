@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2021 at 03:54 PM
+-- Generation Time: Nov 11, 2021 at 05:19 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -30,13 +30,11 @@ USE `furniture_website`;
 --
 
 DROP TABLE IF EXISTS `jenis`;
-CREATE TABLE IF NOT EXISTS `jenis` (
-  `kode_jenis` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `jenis` (
+  `kode_jenis` int(11) NOT NULL,
   `nama_jenis` varchar(30) NOT NULL,
-  `kode_kategori` int(11) NOT NULL,
-  PRIMARY KEY (`kode_jenis`),
-  KEY `fk_kode_kategori` (`kode_kategori`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+  `kode_kategori` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `jenis`
@@ -54,11 +52,10 @@ INSERT INTO `jenis` (`kode_jenis`, `nama_jenis`, `kode_kategori`) VALUES
 --
 
 DROP TABLE IF EXISTS `kategori`;
-CREATE TABLE IF NOT EXISTS `kategori` (
-  `kode_kategori` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_kategori` varchar(20) NOT NULL,
-  PRIMARY KEY (`kode_kategori`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `kategori` (
+  `kode_kategori` int(11) NOT NULL,
+  `nama_kategori` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kategori`
@@ -76,17 +73,15 @@ INSERT INTO `kategori` (`kode_kategori`, `nama_kategori`) VALUES
 --
 
 DROP TABLE IF EXISTS `produk`;
-CREATE TABLE IF NOT EXISTS `produk` (
-  `kode_produk` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `produk` (
+  `kode_produk` int(11) NOT NULL,
   `nama_produk` varchar(30) NOT NULL,
   `desc_produk` varchar(100) DEFAULT NULL,
   `harga_produk` int(11) NOT NULL,
   `stok_produk` int(11) NOT NULL,
   `kode_jenis` int(11) NOT NULL,
-  `url_gambar` varchar(200) NOT NULL,
-  PRIMARY KEY (`kode_produk`),
-  KEY `fk_kode_jenis` (`kode_jenis`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+  `url_gambar` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `produk`
@@ -104,14 +99,13 @@ INSERT INTO `produk` (`kode_produk`, `nama_produk`, `desc_produk`, `harga_produk
 --
 
 DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE `user` (
   `kode_user` int(11) NOT NULL,
   `username_user` varchar(30) NOT NULL,
   `password_user` varchar(20) NOT NULL,
   `nama_user` varchar(30) NOT NULL,
   `email_user` varchar(30) NOT NULL,
-  `saldo_user` int(11) NOT NULL,
-  PRIMARY KEY (`kode_user`)
+  `saldo_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -119,7 +113,66 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`kode_user`, `username_user`, `password_user`, `nama_user`, `email_user`, `saldo_user`) VALUES
-(0, 'adi', '123', 'adi', 'adi@gmail.com', 1000000);
+(1, 'adi', '123', 'adi', 'adi@gmail.com', 1000000),
+(2, 'acxel', 'derian', 'acxel', 'acxel@gmail.com', 1000000);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `jenis`
+--
+ALTER TABLE `jenis`
+  ADD PRIMARY KEY (`kode_jenis`),
+  ADD KEY `fk_kode_kategori` (`kode_kategori`);
+
+--
+-- Indexes for table `kategori`
+--
+ALTER TABLE `kategori`
+  ADD PRIMARY KEY (`kode_kategori`);
+
+--
+-- Indexes for table `produk`
+--
+ALTER TABLE `produk`
+  ADD PRIMARY KEY (`kode_produk`),
+  ADD KEY `fk_kode_jenis` (`kode_jenis`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`kode_user`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `jenis`
+--
+ALTER TABLE `jenis`
+  MODIFY `kode_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `kategori`
+--
+ALTER TABLE `kategori`
+  MODIFY `kode_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `produk`
+--
+ALTER TABLE `produk`
+  MODIFY `kode_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `kode_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

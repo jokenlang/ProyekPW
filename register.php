@@ -26,7 +26,7 @@ if (isset($_POST['register'])) {
         alert('Semua Field harus diisi');
     } else {
         $saldo = 1000000;
-        $stmt = $conn->prepare("INSERT INTO `user` (`kode_user`, `username_user`, `password_user`, `nama_user`, `email_user`,`saldo_user`) VALUES ('', ?,?,?,?,?)");
+        $stmt = $conn->prepare("INSERT INTO `user` (`username_user`, `password_user`, `nama_user`, `email_user`,`saldo_user`) VALUES (?,?,?,?,?)");
         $stmt->bind_param("ssssi", $username, $password, $nama, $email, $saldo);
         $result = $stmt->execute();
         if ($result) {
@@ -75,7 +75,7 @@ if (isset($_POST['login'])) {
                     <br>
                     Email : <input type="text" name="email" id="">
                     <br>
-                    <button =value="Register" name="register" class="register"><Span>Register</Span></button>
+                    <button value="Register" name="register" class="register"><Span>Register</Span></button>
                     <button value="login" name="login" class="login"><Span>Login</Span></button>
                 </form>
             </div>
