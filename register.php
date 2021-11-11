@@ -3,7 +3,7 @@ require_once('connection.php');
 
 $user = $conn->query("SELECT * From user")->fetch_all(MYSQLI_ASSOC);
 if (isset($_POST['register'])) {
-    print_r($_POST);
+    // print_r($_POST);
     $username = $_POST['username'];
     $password = $_POST['password'];
     $confirm = $_POST['confirm'];
