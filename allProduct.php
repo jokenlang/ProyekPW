@@ -34,6 +34,7 @@ $produk = $listUser = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASS
                         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                         <a class="nav-link active" href="allProduct.php">All Products</a>
                         <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="login.php">Log In</a>
                     </div>
                 </div>
             </nav>
@@ -41,15 +42,14 @@ $produk = $listUser = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASS
     </nav>
 
     <div class="container">
-        <span class="text-dark my-3 font-weight-bold" style="font-size: 2em;">Categories</span>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" style="float: right;" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="searchName">Search</button>
+        <span class="text-dark my-3 font-weight-bold" style="font-size: 2em;">Products</span>
+        <form class="form-inline my-3" method="POST" style="float: right;">
+            <input class="form-control mr-sm-2" style="float: right;" type="search" placeholder="Search" aria-label="Search" id="search">
+            <button class="btn btn-primary my-2 my-sm-0" type="submit" name="searchName">Search</button>
         </form>
-
     </div>
 
-    <div class="container">
+    <!-- <div class="container">
         <div class="row">
             <?php foreach ($produk as $key => $value) { ?>
                 <div class="card col-md-4" style="width: 18rem;">
@@ -62,6 +62,10 @@ $produk = $listUser = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASS
                 </div>
             <?php } ?>
         </div>
+    </div> -->
+
+    <div class="table-responsive" id="dynamic_content">
+
     </div>
 
 
@@ -73,7 +77,8 @@ $produk = $listUser = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASS
         </div>
     </footer>
     <script>
-        /*$(document).ready(function() {
+        $(document).ready(function() {
+
             load_data(1);
 
             function load_data(page, query = '') {
@@ -84,16 +89,27 @@ $produk = $listUser = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASS
                         page: page,
                         query: query
                     },
-                    success: function(response) {
-                        $(document).html(response);
+                    success: function(data) {
+                        $('#dynamic_content').html(data);
                     }
                 });
             }
 
-        })*/
+            $(document).on('click', '.page-link', function() {
+                var page = $(this).data('page_number');
+                var query = $('#search').val();
+                load_data(page, query);
+            });
+
+            $('#search').keyup(function() {
+                var query = $('#search').val();
+                load_data(1, query);
+            });
+        });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script> -->
 </body>
 
 </html>

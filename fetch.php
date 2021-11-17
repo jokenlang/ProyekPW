@@ -14,7 +14,7 @@ $connect = new PDO("mysql:host=localhost; dbname=furniture_website", "root", "")
 
 $total_record = get_total_row($connect);*/
 
-$limit = '1';
+$limit = '2';
 $page = 1;
 if ($_POST['page'] > 1) {
   $start = (($_POST['page'] - 1) * $limit);
@@ -34,7 +34,7 @@ if ($_POST['query'] != '') {
   ';
   $search = true;
 }
-
+/*
 if ($_POST['min'] != '') {
   $min = (int) $_POST['min'];
   if ($search) {
@@ -57,7 +57,7 @@ if ($_POST['max'] != '') {
     WHERE harga_produk <= $max ";
   }
 }
-
+*/
 // echo $query;
 
 //$query .= 'ORDER BY webslesson_post_id ASC ';
@@ -74,7 +74,7 @@ $statement->execute();
 $result = $statement->fetchAll();
 $total_filter_data = $statement->rowCount();
 
-$output = '
+/*$output = '
 <label>Total Records - ' . $total_data . '</label>
 <table class="table table-striped table-bordered">
   <tr>
@@ -83,17 +83,38 @@ $output = '
     <th>Harga Produk</th>
     <th> Gambar Produk </th>
   </tr>
-';
+';*/
+
+$output = "<div class='container'><label>Total Records - $total_data</label>
+";
+$output .= "<div class='row'>";
+
 if ($total_data > 0) {
-  foreach ($result as $row) {
-    $output .= '
+  foreach ($result as $value) {
+    /*$output .= '
     <tr>
       <td>' . $row["nama_produk"] . '</td>
       <td>' . $row["desc_produk"] . '</td>
       <td> Rp.' . number_format($row["harga_produk"], 0, ',', '.') . '</td>
       <td><img src="' . $row["url_gambar"] . '" style="height=100px;width=100px;margin-left=20px"></td>
     </tr>
-    ';
+    ';*/
+    $url = $value['url_gambar'];
+    $nama = strtoUpper($value['nama_produk']);
+    $desc = $value['desc_produk'];
+    $harga = 'Rp.' . number_format($value["harga_produk"], 0, ',', '.');
+    $kode = $value['kode_produk'];
+    $output .= "
+    <div class='card col-md-3 m-2'>
+                    <img class='card-img-top' src='$url' alt='Card image cap'>
+                    <div class='card-body'>
+                        <h5 class='card-title'>$nama</h5>
+                        <p class='card-text'>$desc</p>
+                        <p class='card-text font-weight-bold'>$harga</p>
+                        <a href='#' class='btn btn-dark' value='$kode'>Add to Cart</a>
+                    </div>
+    </div>
+    ";
   }
 } else {
   $output .= '
@@ -103,12 +124,14 @@ if ($total_data > 0) {
   ';
 }
 
-$output .= '
-</table>
+$output .= "
+</div>
+</div>
 <br />
-<div align="center">
-  <ul class="pagination">
-';
+<div align='right'>
+  <div class='container'>
+  <ul class='pagination' style='float:right'>
+";
 
 $total_links = ceil($total_data / $limit);
 $previous_link = '';
@@ -192,9 +215,9 @@ for ($count = 0; $count < count($page_array); $count++) {
 }
 
 $output .= $previous_link . $page_link . $next_link;
-$output .= '
-  </ul>
-
+$output .= '  
+</ul>
+</div>
 </div>
 ';
 
