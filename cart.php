@@ -35,7 +35,6 @@ if (isset($_POST['kurangiQty'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
-
     <title>Document</title>
 </head>
 
@@ -52,7 +51,7 @@ if (isset($_POST['kurangiQty'])) {
                     <th scope="col">Desc</th>
                     <th scope="col">Qty</th>
                     <th scope="col">Subtotal</th>
-                    <th scope="col">Remove</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -74,7 +73,7 @@ if (isset($_POST['kurangiQty'])) {
                         <td>Rp. <?= number_format($value['subtotal'], 0, '.', '.') ?></td>
                         <td>
                             <form action="" method="POST">
-                                <button value="<?= $key ?>" name="remove">Remove</button>
+                                <button class="btn btn-danger" value="<?= $key ?>" name="remove">Remove</button>
                             </form>
                         </td>
                         <?php $total += $value['subtotal']; ?>
