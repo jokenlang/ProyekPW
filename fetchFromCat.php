@@ -114,8 +114,10 @@ if ($total_data > 0) {
                         <h5 class='card-title'>$nama</h5>
                         <p class='card-text'>$desc</p>
                         <p class='card-text font-weight-bold'>$harga</p>
-                        <a href='#' class='btn btn-dark' value='$kode'>Add to Cart</a>
-                    </div>
+                        <form method='post'>
+                        <button href='#' class='btn btn-dark' value='$kode' name='add'>Add to Cart</button>
+                        </form>
+                        </div>
     </div>
     ";
     }

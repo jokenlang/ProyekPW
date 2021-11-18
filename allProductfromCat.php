@@ -6,6 +6,22 @@ $produk = $listUser = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASS
     $query = "SELECT * From produk where nama_produk like'%$keyword%'";
     $hasil = mysqli_query($conn, $query);
 }*/
+
+if (isset($_POST['add'])) {
+    $kode_produk = $_POST['add'];
+    $q = $conn->query("SELECT * FROM produk WHERE kode_produk='$kode_produk'");
+    $produk = $q->fetch_assoc();
+    $_SESSION['cart'][] = [
+        'kode_produk' => $kode_produk,
+        'nama_produk' => $produk['nama_produk'],
+        'desc_produk' => $produk['desc_produk'],
+        'harga_produk' => $produk['harga_produk'],
+        'url_gambar' => $produk['url_gambar'],
+        'qty' => 1
+    ];
+    // print_r($_SESSION);
+    header('Location:cart.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,26 +36,7 @@ $produk = $listUser = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASS
 </head>
 
 <body class="bg-light">
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand bg-light px-2" href="#">
-                    <img src="asset/logo.png" width="30" height="30" alt="">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-link active" href="allProduct.php">All Products</a>
-                        <a class="nav-link" href="#">About Us</a>
-                        <a class="nav-link" href="login.php">Log In</a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </nav>
+    <?php include('header.php') ?>
 
     <div class="container">
         <span class="text-dark my-3 font-weight-bold" style="font-size: 2em;">Products</span>
@@ -68,14 +65,8 @@ $produk = $listUser = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASS
 
     </div>
 
+    <?php include('footer.php') ?>
 
-
-    <footer class="bg-dark text-center text-lg-start">
-        <div class="text-center p-3 text-light" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2020 Copyright:
-            <a class="text-light" href="">220116900,220116922</a>
-        </div>
-    </footer>
     <script>
         $(document).ready(function() {
 

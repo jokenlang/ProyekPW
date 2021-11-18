@@ -17,32 +17,18 @@ if (isset($_POST['pilihCat'])) {
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <style>
+        .kategori {
+            transition: 0.8s;
+        }
+
+        .kategori:hover {
+            transform: skewY(3deg);
+        }
     </style>
 </head>
 
 <body class="bg-light">
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand bg-light px-2" href="#">
-                    <img src="asset/logo.png" width="30" height="30" alt="">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-link" href="allProduct.php">All Products</a>
-                        <a class="nav-link" href="#">About Us</a>
-                        <a class="nav-link" href="login.php">Log In</a>
-                        <a class="nav-link" href="register.php">Register</a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </nav>
-
+    <?php include('header.php'); ?>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -90,8 +76,8 @@ if (isset($_POST['pilihCat'])) {
     <div class="container">
         <div class="row">
             <?php foreach ($kategori as $key => $value) { ?>
-                <form action="" method="POST" class="card col-md-4 my-3">
-                    <button name="pilihCat" value="<?= $value['kode_kategori'] ?>" style="border:none;background-color:transparent">
+                <form action="" method="POST" class="card col-md-4 my-4 kategori" style="border:none;background-color:transparent">
+                    <button name="pilihCat" value="<?= $value['kode_kategori'] ?>">
                         <img class="card-img-top my-2" src="asset/cat<?= $key ?>.jpg" alt="Card image cap" style="border-radius: 100%;width:100%;height:250px">
                         <div class="card-body text-center">
                             <h5 class="card-title"><?= $value['nama_kategori'] ?></h5>
@@ -102,12 +88,8 @@ if (isset($_POST['pilihCat'])) {
         </div>
     </div>
 
-    <footer class="bg-dark text-center text-lg-start">
-        <div class="text-center p-3 text-light" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2020 Copyright:
-            <a class="text-light" href="">220116900,220116922</a>
-        </div>
-    </footer>
+    <?php include('footer.php'); ?>
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </body>
