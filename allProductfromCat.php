@@ -1,6 +1,6 @@
 <?php
 require_once('connection.php');
-$produk = $listUser = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASSOC);
+$produk = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASSOC);
 /*if (isset($_POST['searchName'])) {
     $keyword = $_POST['keyword'];
     $query = "SELECT * From produk where nama_produk like'%$keyword%'";
