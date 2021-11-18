@@ -6,6 +6,22 @@ $produk = $listUser = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASS
     $query = "SELECT * From produk where nama_produk like'%$keyword%'";
     $hasil = mysqli_query($conn, $query);
 }*/
+
+if (isset($_POST['add'])) {
+    $kode_produk = $_POST['add'];
+    $q = $conn->query("SELECT * FROM produk WHERE kode_produk='$kode_produk'");
+    $produk = $q->fetch_assoc();
+    $_SESSION['cart'][] = [
+        'kode_produk' => $kode_produk,
+        'nama_produk' => $produk['nama_produk'],
+        'desc_produk' => $produk['desc_produk'],
+        'harga_produk' => $produk['harga_produk'],
+        'url_gambar' => $produk['url_gambar'],
+        'qty' => 1
+    ];
+    header('Location:cartCoba.php');
+    print_r($_SESSION);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
