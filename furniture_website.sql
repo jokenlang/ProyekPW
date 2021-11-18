@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2021 at 05:37 AM
+-- Generation Time: Nov 18, 2021 at 06:15 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `furniture_website`
 --
+CREATE DATABASE IF NOT EXISTS `furniture_website` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `furniture_website`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `jenis`
 --
 
+DROP TABLE IF EXISTS `jenis`;
 CREATE TABLE `jenis` (
   `kode_jenis` int(11) NOT NULL,
   `nama_jenis` varchar(30) NOT NULL,
@@ -48,6 +51,7 @@ INSERT INTO `jenis` (`kode_jenis`, `nama_jenis`, `kode_kategori`) VALUES
 -- Table structure for table `kategori`
 --
 
+DROP TABLE IF EXISTS `kategori`;
 CREATE TABLE `kategori` (
   `kode_kategori` int(11) NOT NULL,
   `nama_kategori` varchar(20) NOT NULL
@@ -68,6 +72,7 @@ INSERT INTO `kategori` (`kode_kategori`, `nama_kategori`) VALUES
 -- Table structure for table `produk`
 --
 
+DROP TABLE IF EXISTS `produk`;
 CREATE TABLE `produk` (
   `kode_produk` int(11) NOT NULL,
   `nama_produk` varchar(30) NOT NULL,
@@ -94,6 +99,7 @@ INSERT INTO `produk` (`kode_produk`, `nama_produk`, `desc_produk`, `harga_produk
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `kode_user` int(11) NOT NULL,
   `username_user` varchar(30) NOT NULL,
