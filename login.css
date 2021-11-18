@@ -24,6 +24,13 @@ span{
     border-radius: 10px;
     background-color: white;
 }
+.home{
+    padding: 10px 20px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: greenyellow;
+    /* color: white; */
+}
 .cb {
     clear: both;
 }
@@ -116,6 +123,35 @@ input[type=password]{
     opacity: 1;
     right: 0;
 }
+
+.home span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.home span:after {
+    color: black;
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -0px;
+    transition: 0.5s;
+}
+.home:hover span {
+    text-decoration: underline;
+    color: black;
+    padding-right: 40px;
+    /* margin-left: 10%; */
+}
+.home:hover span:after {
+    color: black;
+    opacity: 1;
+    right: 0;
+}
+
+
 
 .atas .kiri{
     float: left;

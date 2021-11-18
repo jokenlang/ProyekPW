@@ -45,6 +45,10 @@ if (isset($_POST['addProduct'])) {
     }
 }
 
+if (isset($_POST['logout'])) {
+    header('Location:index.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -139,6 +143,8 @@ if (isset($_POST['addProduct'])) {
             </tr>
         <?php } ?>
     </table>
+    
+
 
     <!-- Navigasi -->
     <?php for ($i = 1; $i <= $jumlahHal; $i++) { ?>
@@ -166,6 +172,10 @@ if (isset($_POST['addProduct'])) {
             });
         });
     </script>
+    <br>
+    <form action="" method="post">
+        <button name="logout">logout</button>
+    </form>
 </body>
 
 </html>

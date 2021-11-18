@@ -15,7 +15,7 @@ session_start();
 $total_record = get_total_row($connect);*/
 // print_r($_SESSION);
 
-$limit = '2';
+$limit = '6';
 $page = 1;
 if ($_POST['page'] > 1) {
     $start = (($_POST['page'] - 1) * $limit);

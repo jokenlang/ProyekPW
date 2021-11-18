@@ -25,6 +25,10 @@ if (isset($_POST['login'])) {
     }
 }
 
+if(isset($_POST['home'])){
+    header('Location: index.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,6 +66,7 @@ if (isset($_POST['login'])) {
                         <!-- <input type="submit" value="Login" name="login" class="login"> -->
                         <button value="Login" name="login" class="login"><span>Login</span></button>
                         <button name="register" value="register" class="register"><span>Register </span></button>
+                        <button name="home" value="home" class="home"><span>Home </span></button>
                     </div>
                 </form>
             </div>

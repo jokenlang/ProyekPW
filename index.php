@@ -36,6 +36,7 @@ if (isset($_POST['pilihCat'])) {
                         <a class="nav-link" href="allProduct.php">All Products</a>
                         <a class="nav-link" href="#">About Us</a>
                         <a class="nav-link" href="login.php">Log In</a>
+                        <a class="nav-link" href="register.php">Register</a>
                     </div>
                 </div>
             </nav>
@@ -89,7 +90,7 @@ if (isset($_POST['pilihCat'])) {
     <div class="container">
         <div class="row">
             <?php foreach ($kategori as $key => $value) { ?>
-                <form action="" method="POST" class="card col-md-4">
+                <form action="" method="POST" class="card col-md-4 my-3">
                     <button name="pilihCat" value="<?= $value['kode_kategori'] ?>" style="border:none;background-color:transparent">
                         <img class="card-img-top my-2" src="asset/cat<?= $key ?>.jpg" alt="Card image cap" style="border-radius: 100%;width:100%;height:250px">
                         <div class="card-body text-center">

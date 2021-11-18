@@ -41,6 +41,10 @@ if (isset($_POST['login'])) {
     header('Location:login.php');
 }
 
+
+if(isset($_POST['home'])){
+    header('Location: index.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -69,14 +73,15 @@ if (isset($_POST['login'])) {
                     <br>
                     Nama : <input type="text" name="nama" id="">
                     <br>
-                    Password : <input type="text" name="password" id="">
+                    Password : <input type="password" name="password" id="">
                     <br>
-                    Confirm Password : <input type="text" name="confirm" id="">
+                    Confirm Password : <input type="password" name="confirm" id="">
                     <br>
                     Email : <input type="text" name="email" id="">
                     <br>
                     <button value="Register" name="register" class="register"><Span>Register</Span></button>
                     <button value="login" name="login" class="login"><Span>Login</Span></button>
+                    <button name="home" value="home" class="home"><span>Home </span></button>
                 </form>
             </div>
         </div>
