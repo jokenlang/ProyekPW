@@ -44,8 +44,8 @@ $produk = $listUser = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASS
     <div class="container">
         <span class="text-dark my-3 font-weight-bold" style="font-size: 2em;">Products</span>
         <form class="form-inline my-3" method="POST" style="float: right;">
-            <input class="form-control mr-sm-2" style="float: right;" type="search" placeholder="Search" aria-label="Search" id="search">
-            <!-- <button class="btn btn-primary my-2 my-sm-0" type="submit" name="searchName">Search</button> -->
+            <!-- <input class="form-control mr-sm-2" style="float: right;" type="search" placeholder="Search" aria-label="Search" id="search">
+            <button class="btn btn-primary my-2 my-sm-0" type="submit" name="searchName">Search</button> -->
         </form>
     </div>
 
@@ -83,7 +83,7 @@ $produk = $listUser = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASS
 
             function load_data(page, query = '') {
                 $.ajax({
-                    url: "fetch.php",
+                    url: "fetchfromCat.php",
                     method: "POST",
                     data: {
                         page: page,
@@ -101,10 +101,10 @@ $produk = $listUser = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASS
                 load_data(page, query);
             });
 
-            $('#search').keyup(function() {
-                var query = $('#search').val();
-                load_data(1, query);
-            });
+            // $('#search').keyup(function() {
+            //     var query = $('#search').val();
+            //     load_data(1, query);
+            // });
         });
     </script>
 

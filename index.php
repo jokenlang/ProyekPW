@@ -1,6 +1,11 @@
 <?php
 require_once('connection.php');
 $kategori = $conn->query("SELECT * From kategori")->fetch_all(MYSQLI_ASSOC);
+
+if (isset($_POST['pilihCat'])) {
+    $_SESSION['idxKategori'] = $_POST['pilihCat'];
+    header('Location:allProductfromCat.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,12 +89,14 @@ $kategori = $conn->query("SELECT * From kategori")->fetch_all(MYSQLI_ASSOC);
     <div class="container">
         <div class="row">
             <?php foreach ($kategori as $key => $value) { ?>
-                <div class="card col-md-4" style="border:none;background-color:transparent">
-                    <img class="card-img-top my-2" src="asset/cat<?= $key ?>.jpg" alt="Card image cap" style="border-radius: 100%;width:100%;height:250px">
-                    <div class="card-body text-center">
-                        <h5 class="card-title"><?= $value['nama_kategori'] ?></h5>
-                    </div>
-                </div>
+                <form action="" method="POST" class="card col-md-4">
+                    <button name="pilihCat" value="<?= $value['kode_kategori'] ?>" style="border:none;background-color:transparent">
+                        <img class="card-img-top my-2" src="asset/cat<?= $key ?>.jpg" alt="Card image cap" style="border-radius: 100%;width:100%;height:250px">
+                        <div class="card-body text-center">
+                            <h5 class="card-title"><?= $value['nama_kategori'] ?></h5>
+                        </div>
+                    </button>
+                </form>
             <?php } ?>
         </div>
     </div>

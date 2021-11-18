@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2021 at 05:19 AM
+-- Generation Time: Nov 18, 2021 at 05:37 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `furniture_website`
 --
-CREATE DATABASE IF NOT EXISTS `furniture_website` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `furniture_website`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +27,6 @@ USE `furniture_website`;
 -- Table structure for table `jenis`
 --
 
-DROP TABLE IF EXISTS `jenis`;
 CREATE TABLE `jenis` (
   `kode_jenis` int(11) NOT NULL,
   `nama_jenis` varchar(30) NOT NULL,
@@ -51,7 +48,6 @@ INSERT INTO `jenis` (`kode_jenis`, `nama_jenis`, `kode_kategori`) VALUES
 -- Table structure for table `kategori`
 --
 
-DROP TABLE IF EXISTS `kategori`;
 CREATE TABLE `kategori` (
   `kode_kategori` int(11) NOT NULL,
   `nama_kategori` varchar(20) NOT NULL
@@ -72,7 +68,6 @@ INSERT INTO `kategori` (`kode_kategori`, `nama_kategori`) VALUES
 -- Table structure for table `produk`
 --
 
-DROP TABLE IF EXISTS `produk`;
 CREATE TABLE `produk` (
   `kode_produk` int(11) NOT NULL,
   `nama_produk` varchar(30) NOT NULL,
@@ -90,7 +85,8 @@ CREATE TABLE `produk` (
 INSERT INTO `produk` (`kode_produk`, `nama_produk`, `desc_produk`, `harga_produk`, `stok_produk`, `kode_jenis`, `url_gambar`) VALUES
 (1, 'Brimnes', 'Wardrobe with 2 doors, white, 78x190 cm', 2099000, 5, 2, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/406/0140624_PE300605_S4.jpg'),
 (3, 'baggebo', 'Rak buku, putih, 50x30x80 cm', 299000, 8, 3, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/189/1018918_PE831218_S4.jpg'),
-(5, 'Vuku', 'Wardrobe, white, 74x51x149 cm', 299000, 6, 2, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/980/0498088_PE629449_S4.jpg');
+(5, 'Vuku', 'Wardrobe, white, 74x51x149 cm', 299000, 6, 2, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/980/0498088_PE629449_S4.jpg'),
+(6, 'GRIMSBU', 'Bed frame, grey/luröy, 90x200 cm', 1099000, 3, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/492/0749251_PE747239_S5.jpg');
 
 -- --------------------------------------------------------
 
@@ -98,7 +94,6 @@ INSERT INTO `produk` (`kode_produk`, `nama_produk`, `desc_produk`, `harga_produk
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `kode_user` int(11) NOT NULL,
   `username_user` varchar(30) NOT NULL,
@@ -166,7 +161,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `kode_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `kode_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
