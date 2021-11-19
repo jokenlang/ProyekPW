@@ -19,13 +19,13 @@ if (isset($_POST['login'])) {
             }
         }
         if ($idxUser != -1) {
-            header('Location:user.php');
+            header('Location:index.php');
             $_SESSION['idxUser'] = $idxUser;
         }
     }
 }
 
-if(isset($_POST['home'])){
+if (isset($_POST['home'])) {
     header('Location: index.php');
 }
 
@@ -55,23 +55,23 @@ if(isset($_POST['home'])){
                 <div class="cb"></div>
                 <div class="bawah">
                     <form action="" method="post">
-                    <label for="">Username :</label>
-                    <br>
-                    <input type="text" name="username" id="" placeholder="username">
-                    <br><br>
-                    <label for="">Password :</label>
-                    <br><input type="password" name="password" id="" placeholder="password">
-                    <br>
-                    <div class="button">
-                        <!-- <input type="submit" value="Login" name="login" class="login"> -->
-                        <button value="Login" name="login" class="login"><span>Login</span></button>
-                        <button name="register" value="register" class="register"><span>Register </span></button>
-                        <button name="home" value="home" class="home"><span>Home </span></button>
-                    </div>
-                </form>
+                        <label for="">Username :</label>
+                        <br>
+                        <input type="text" name="username" id="" placeholder="username">
+                        <br><br>
+                        <label for="">Password :</label>
+                        <br><input type="password" name="password" id="" placeholder="password">
+                        <br>
+                        <div class="button">
+                            <!-- <input type="submit" value="Login" name="login" class="login"> -->
+                            <button value="Login" name="login" class="login"><span>Login</span></button>
+                            <button name="register" value="register" class="register"><span>Register </span></button>
+                            <button name="home" value="home" class="home"><span>Home </span></button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 
 </body>
 
