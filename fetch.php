@@ -34,34 +34,6 @@ if ($_POST['query'] != '') {
   ';
   $search = true;
 }
-/*
-if ($_POST['min'] != '') {
-  $min = (int) $_POST['min'];
-  if ($search) {
-    $query .= "
-    OR harga_produk >= $min";
-  } else {
-    $query .= "
-    WHERE harga_produk >= $min ";
-  }
-  $search = true;
-}
-
-if ($_POST['max'] != '') {
-  $max = (int) $_POST['max'];
-  if ($search) {
-    $query .= "
-    AND harga_produk <= $max";
-  } else {
-    $query .= "
-    WHERE harga_produk <= $max ";
-  }
-}
-*/
-// echo $query;
-
-//$query .= 'ORDER BY webslesson_post_id ASC ';
-
 $filter_query = $query . 'LIMIT ' . $start . ', ' . $limit . '';
 
 $statement = $connect->prepare($query);
@@ -74,38 +46,20 @@ $statement->execute();
 $result = $statement->fetchAll();
 $total_filter_data = $statement->rowCount();
 
-/*$output = '
-<label>Total Records - ' . $total_data . '</label>
-<table class="table table-striped table-bordered">
-  <tr>
-    <th>Merk Produk</th>
-    <th>Desc Produk</th>
-    <th>Harga Produk</th>
-    <th> Gambar Produk </th>
-  </tr>
-';*/
 
 $output = "<div class='container'><label>Total Records - $total_data</label>
 ";
-$output .= "<div class='row'>";
+$output .= "<div class='row mx-auto'>";
 
 if ($total_data > 0) {
   foreach ($result as $value) {
-    /*$output .= '
-    <tr>
-      <td>' . $row["nama_produk"] . '</td>
-      <td>' . $row["desc_produk"] . '</td>
-      <td> Rp.' . number_format($row["harga_produk"], 0, ',', '.') . '</td>
-      <td><img src="' . $row["url_gambar"] . '" style="height=100px;width=100px;margin-left=20px"></td>
-    </tr>
-    ';*/
     $url = $value['url_gambar'];
     $nama = strtoUpper($value['nama_produk']);
     $desc = $value['desc_produk'];
     $harga = 'Rp.' . number_format($value["harga_produk"], 0, ',', '.');
     $kode = $value['kode_produk'];
     $output .= "
-    <div class='card col-md-3 m-2'>
+    <div class='card col-12 col-sm-5 col-md-3 m-1 m-md-4'>
                     <img class='card-img-top' src='$url' alt='Card image cap'>
                     <div class='card-body'>
                         <h5 class='card-title'>$nama</h5>
@@ -132,7 +86,7 @@ $output .= "
 <br />
 <div align='right'>
   <div class='container'>
-  <ul class='pagination' style='float:right'>
+  <ul class='pagination float-right'>
 ";
 
 $total_links = ceil($total_data / $limit);

@@ -1,6 +1,10 @@
 <?php
 require_once('connection.php');
-$cart = $_SESSION['cart'];
+if (isset($_SESSION['cart'])) {
+    $cart = $_SESSION['cart'];
+} else {
+    $cart = null;
+}
 
 if (isset($_POST['remove'])) {
     $key = $_POST['remove'];
@@ -56,35 +60,44 @@ if (isset($_POST['kurangiQty'])) {
             </thead>
             <tbody>
                 <?php $total = 0; ?>
-                <?php foreach ($cart as $key => $value) { ?>
-                    <tr>
-                        <td>
-                            <img src="<?= $value['url_gambar'] ?>" alt="" style="width: 50px;height: 50px;">
-                            <?= strtoUpper($value['nama_produk']) ?>
-                        </td>
-                        <td><?= $value['desc_produk'] ?></td>
-                        <td>
-                            <form action="" method="POST">
-                                <button name="kurangiQty" value="<?= $key ?>" class="btn btn-dark">-</button>
-                                <button class="btn"><?= $value['qty'] ?></button>
-                                <button name="tambahQty" value="<?= $key ?>" class="btn btn-dark">+</button>
-                            </form>
-                        </td>
-                        <td>Rp. <?= number_format($value['subtotal'], 0, '.', '.') ?></td>
-                        <td>
-                            <form action="" method="POST">
-                                <button class="btn btn-danger" value="<?= $key ?>" name="remove">Remove</button>
-                            </form>
-                        </td>
-                        <?php $total += $value['subtotal']; ?>
-                    </tr>
+                <?php if ($cart != null) { ?>
+                    <?php foreach ($cart as $key => $value) { ?>
+                        <tr>
+                            <td>
+                                <img src="<?= $value['url_gambar'] ?>" alt="" style="width: 50px;height: 50px;">
+                                <?= strtoUpper($value['nama_produk']) ?>
+                            </td>
+                            <td><?= $value['desc_produk'] ?></td>
+                            <td>
+                                <form action="" method="POST">
+                                    <button name="kurangiQty" value="<?= $key ?>" class="btn btn-dark">-</button>
+                                    <button class="btn"><?= $value['qty'] ?></button>
+                                    <button name="tambahQty" value="<?= $key ?>" class="btn btn-dark">+</button>
+                                </form>
+                            </td>
+                            <td>Rp. <?= number_format($value['subtotal'], 0, '.', '.') ?></td>
+                            <td>
+                                <form action="" method="POST">
+                                    <button class="btn btn-danger" value="<?= $key ?>" name="remove">Remove</button>
+                                </form>
+                            </td>
+                            <?php $total += $value['subtotal']; ?>
+                        </tr>
+                    <?php } ?>
                 <?php } ?>
                 <tr>
-                    <td colspan="3" class="font-weight-bold">Total</td>
-                    <td>Rp. <?= number_format($total, 0, ',', '.') ?></td>
+                    <td colspan="3" class="font-weight-bold text-danger">TOTAL</td>
+                    <td class="font-weight-bold h5">Rp. <?= number_format($total, 0, ',', '.') ?></td>
                 </tr>
             </tbody>
         </table>
+
+        <div class="container">
+            <form action="" method="POST">
+                <button class="btn btn-dark float-right my-3">>> Checkout</button>
+            </form>
+        </div>
+        <div style="clear:both"></div>
     </div>
 
     <?php include('footer.php') ?>
