@@ -1,6 +1,10 @@
 <?php
 require_once('connection.php');
 
+if (isset($_POST['logout'])) {
+    unset($_SESSION['idxUser']);
+}
+
 ?>
 
 <nav class="navbar navbar-dark bg-dark">
@@ -28,6 +32,9 @@ require_once('connection.php');
                         $user = $stmt->fetch_assoc();
                     ?>
                         <a class="nav-link" href="">Welcome, <?= $user['nama_user'] ?></a>
+                        <form action="" method="POST">
+                            <button class="btn btn-primary" value="logout" name="logout">Logout</button>
+                        </form>
                     <?php } ?>
                 </div>
             </div>
