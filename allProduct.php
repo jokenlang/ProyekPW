@@ -15,7 +15,7 @@ if (isset($_POST['add'])) {
         'kode_produk' => $kode_produk,
         'nama_produk' => $produk['nama_produk'],
         'desc_produk' => $produk['desc_produk'],
-        'harga_produk' => $produk['harga_produk'],
+        'harga_produk' => (int)($produk['harga_produk']),
         'url_gambar' => $produk['url_gambar'],
         'qty' => 1,
         'subtotal' => $produk['harga_produk']

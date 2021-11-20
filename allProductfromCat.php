@@ -1,11 +1,6 @@
 <?php
 require_once('connection.php');
 $produk = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASSOC);
-/*if (isset($_POST['searchName'])) {
-    $keyword = $_POST['keyword'];
-    $query = "SELECT * From produk where nama_produk like'%$keyword%'";
-    $hasil = mysqli_query($conn, $query);
-}*/
 
 if (isset($_POST['add'])) {
     $kode_produk = $_POST['add'];
@@ -15,11 +10,10 @@ if (isset($_POST['add'])) {
         'kode_produk' => $kode_produk,
         'nama_produk' => $produk['nama_produk'],
         'desc_produk' => $produk['desc_produk'],
-        'harga_produk' => $produk['harga_produk'],
+        'harga_produk' => (int) ($produk['harga_produk']),
         'url_gambar' => $produk['url_gambar'],
         'qty' => 1
     ];
-    // print_r($_SESSION);
     header('Location:cart.php');
 }
 ?>
@@ -91,11 +85,6 @@ if (isset($_POST['add'])) {
                 var query = $('#search').val();
                 load_data(page, query);
             });
-
-            // $('#search').keyup(function() {
-            //     var query = $('#search').val();
-            //     load_data(1, query);
-            // });
         });
     </script>
 

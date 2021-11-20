@@ -93,8 +93,9 @@ if (isset($_POST['kurangiQty'])) {
         </table>
 
         <div class="container">
-            <form action="" method="POST">
-                <button class="btn btn-dark float-right my-3">>> Checkout</button>
+            <form action="snap/checkout-process.php" method="POST">
+                <button name="checkout" value="checkout" class="btn btn-dark float-right my-3">>> Checkout</button>
+                <input type="hidden" name="amount" value="<?= $total ?>">
             </form>
         </div>
         <div style="clear:both"></div>
