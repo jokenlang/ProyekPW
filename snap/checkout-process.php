@@ -96,8 +96,8 @@ $item_details;
 foreach ($cart as $key => $value) {
     $item_details['id'] = $value['kode_produk'];
     $item_details['name'] = $value['nama_produk'];
-    $item_details['price'] = (int) $value['harga_produk'];
-    $item_details['quantity'] = (int) $value['qty'];
+    $item_details['price'] = $value['harga_produk'];
+    $item_details['quantity'] = $value['qty'];
     $item_details['desc'] = $value['desc_produk'];
 }
 $transaction = array(
