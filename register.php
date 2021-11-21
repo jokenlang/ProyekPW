@@ -31,6 +31,7 @@ if (isset($_POST['register'])) {
         $result = $stmt->execute();
         if ($result) {
             alert('Berhasil Register');
+            header('Location:login.php');
         } else {
             alert('Gagal Register');
         }
