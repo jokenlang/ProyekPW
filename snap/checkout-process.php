@@ -88,23 +88,38 @@ $customer_details = array(
 );
 
 // Optional, remove this to display all available payment methods
-$enable_payments = array('bca_clicks', 'mandiri_clickpay', 'credit-card');
+$enable_payments = array('credit_card', 'cimb_clicks', 'mandiri_clickpay', 'echannel');
 
 // Fill transaction details
 $cart = $_SESSION['cart'];
-$item_details;
+
+$idxUser = $_SESSION['idxUser'];
+$stmt = $conn->query("SELECT * FROM user WHERE kode_user='$idxUser'");
+$user = $stmt->fetch_assoc();
+
+$item_details = [];
+$customer_details = array(
+    'first_name'    => $user['nama_user'],
+    'email'         => $user['email_user']
+);
+
 foreach ($cart as $key => $value) {
-    $item_details['id'] = $value['kode_produk'];
-    $item_details['name'] = $value['nama_produk'];
-    $item_details['price'] = $value['harga_produk'];
-    $item_details['quantity'] = $value['qty'];
-    $item_details['desc'] = $value['desc_produk'];
+    $item['item'][] = [
+        'id' => $value['kode_produk'],
+        'name' => $value['nama_produk'],
+        'price' => $value['harga_produk'],
+        'quantity' => $value['qty']
+    ];
 }
+$item_details = $item['item'];
+var_dump($item_details);
 $transaction = array(
     'enabled_payments' => $enable_payments,
     'transaction_details' => $transaction_details,
     'customer_details' => $customer_details,
     'item_details' => $item_details,
+    'customer_detail' => $user,
+    'enable_payment' => $enable_payments
 );
 
 $snap_token = '';
@@ -114,7 +129,7 @@ try {
     echo $e->getMessage();
 }
 
-echo "snapToken = " . $snap_token;
+// echo "snapToken = " . $snap_token;
 
 function printExampleWarningMessage()
 {
@@ -135,6 +150,7 @@ function printExampleWarningMessage()
 <html>
 
 <body>
+    <h1>Do you really want to checkout?</h1>
     <button id="pay-button">Pay!</button>
     <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre>
 
@@ -146,8 +162,11 @@ function printExampleWarningMessage()
             snap.pay('<?php echo $snap_token ?>', {
                 // Optional
                 onSuccess: function(result) {
-                    /* You may add your own js here, this is just example */
-                    document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                    document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 1);
+                    // <?php $notif = new Notification();
+                        // echo $notif->order_id;
+                        // echo $notif->transaction_status; 
+                        ?>
                 },
                 // Optional
                 onPending: function(result) {
