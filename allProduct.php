@@ -20,8 +20,12 @@ if (isset($_POST['add'])) {
         'qty' => 1,
         'subtotal' => $produk['harga_produk']
     ];
-    // print_r($_SESSION);
     header('Location:cart.php');
+}
+
+if (isset($_POST['detail'])) {
+    $_SESSION['idxProduk'] = $_POST['detail'];
+    header('Location:detailProduct.php');
 }
 ?>
 <!DOCTYPE html>
@@ -34,6 +38,11 @@ if (isset($_POST['add'])) {
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="jquery-3.4.1.min.js"></script>
+    <style>
+        .card {
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body class="bg-light">
@@ -47,20 +56,6 @@ if (isset($_POST['add'])) {
         </form>
     </div>
 
-    <!-- <div class="container">
-        <div class="row">
-            <?php foreach ($produk as $key => $value) { ?>
-                <div class="card col-md-4" style="width: 18rem;">
-                    <img class="card-img-top" src="<?= $value['url_gambar'] ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"><?= $value['nama_produk'] ?></h5>
-                        <p class="card-text"><?= $value['desc_produk'] ?></p>
-                        <a href="#" class="btn btn-primary" value="<?= $value['kode_produk'] ?>">Add to Cart</a>
-                    </div>
-                </div>
-            <?php } ?>
-        </div>
-    </div> -->
 
     <div class="table-responsive" id="dynamic_content">
 

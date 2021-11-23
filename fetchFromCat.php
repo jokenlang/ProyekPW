@@ -41,7 +41,7 @@ $statement->execute();
 $result = $statement->fetchAll();
 $total_filter_data = $statement->rowCount();
 
-$output = "<div class='container'><label>Total Records - $total_data</label>
+$output = "<form method='post'><div class='container'><label>Total Records - $total_data</label>
 ";
 $output .= "<div class='row mx-auto'>";
 
@@ -59,9 +59,8 @@ if ($total_data > 0) {
                         <h5 class='card-title'>$nama</h5>
                         <p class='card-text'>$desc</p>
                         <p class='card-text font-weight-bold'>$harga</p>
-                        <form method='post'>
+                        <button href='#' class='btn btn-success' value='$kode' name='detail'>Detail</button>
                         <button href='#' class='btn btn-dark' value='$kode' name='add'>Add to Cart</button>
-                        </form>
                         </div>
     </div>
     ";
@@ -77,6 +76,7 @@ if ($total_data > 0) {
 $output .= "
 </div>
 </div>
+</form>
 <br />
 <div align='right'>
   <div class='container'>

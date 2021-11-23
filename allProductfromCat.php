@@ -16,6 +16,11 @@ if (isset($_POST['add'])) {
     ];
     header('Location:cart.php');
 }
+
+if (isset($_POST['detail'])) {
+    $_SESSION['idxProduk'] = $_POST['detail'];
+    header('Location:detailProduct.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
