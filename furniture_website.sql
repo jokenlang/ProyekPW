@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2021 at 03:09 PM
+-- Generation Time: Nov 24, 2021 at 04:11 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -174,7 +174,24 @@ INSERT INTO `produk` (`kode_produk`, `nama_produk`, `desc_produk`, `harga_produk
 (86, 'UTÅKER', 'Stackable bed, pine, 80x200 cm', 2499000, 13, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/550/0655003_PE708895_S4.jpg'),
 (87, 'MALM', 'Bed frame, high, w 2 storage boxes, white/luröy, 120x200 cm', 3699000, 12, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/488/0948881_PE799354_S4.jpg'),
 (88, 'MINNEN', 'Ext bed frame with slatted bed base, white, 80x200 cm', 1799000, 17, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/362/0636271_PE697771_S4.jpg'),
-(89, 'TARVA', 'Bed frame, pine/luröy, 90x200 cm', 1599000, 12, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/550/0655004_PE708894_S4.jpg');
+(89, 'TARVA', 'Bed frame, pine/luröy, 90x200 cm', 1599000, 12, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/550/0655004_PE708894_S4.jpg'),
+(90, 'NORDLI', 'Bed frame with storage, white, 120x200 cm', 44999000, 13, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/550/0655083_PE708900_S4.jpg'),
+(91, 'TARVA', 'Bed frame, pine/lönset, 120x200 cm', 2599000, 13, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/550/0655004_PE708894_S4.jpg'),
+(92, 'SANGESON', 'Bed frame, brown/luröy, 160x200 cm', 2999000, 13, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/385/0638582_PE699001_S4.jpg'),
+(93, 'VITVAL', 'Loft bed frame with desk top, white/light grey, 90x200 cm', 4599000, 15, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/881/0688141_PE722337_S4.jpg'),
+(94, 'SAGSTUA', 'Bed frame, white/lönset, 120x200 cm', 3599000, 12, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/832/0783214_PE761515_S4.jpg'),
+(95, 'FLEKKE', 'Day-bed w 2 drawers/2 mattresses, white/moshult firm, 80x200 cm', 6999000, 14, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/549/0654991_PE708885_S4.jpg'),
+(96, 'BLÅKULLEN', 'Uph bed frame with corner headboard, knisa medium blue, 90x200 cm', 2199000, 21, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/954/0995498_PE821743_S4.jpg'),
+(97, 'ESPEVÄR', 'Slatted mattress base, dark grey, 120x200 cm', 3399000, 14, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/077/0407770_PE570641_S4.jpg'),
+(98, 'GONATT', 'Cot with drawer, white, 60x120 cm', 3499000, 17, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/420/0842037_PE778850_S4.jpg'),
+(99, 'SANDISK', 'Ext bed frame with slatted bed base, grey, 80x200 cm', 3299000, 13, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/578/0957811_PE806113_S4.jpg'),
+(100, 'BRIMNES', 'Bed frame with storage, white/luröy, 120x200 cm', 3499000, 14, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/393/0639331_PE699518_S4.jpg'),
+(101, 'GRIMSBU', 'Bed frame, grey/luröy, 90x200 cm\r\n', 1099000, 5, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/492/0749251_PE747239_S4.jpg'),
+(102, 'VADSÖ', 'Spring mattress, extra firm/light blue, 90x200 cm', 799000, 3, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/987/0898718_PE782604_S4.jpg'),
+(103, 'VADSÖ', 'Spring mattress, extra firm/light blue, 90x200 cm', 799000, 3, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/987/0898718_PE782604_S4.jpg'),
+(104, 'PAX', 'Wardrobe frame, white, 100x58x236 cm\r\n', 3299000, 11, 2, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/210/0721077_PE733043_S4.jpg'),
+(105, ' PAX / VIKEDAL', 'Wardrobe combination, white/mirror glass, 150x60x201 cm', 7499000, 3, 2, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/353/0935354_PE792735_S4.jpg'),
+(106, 'FÄRVIK', 'Pair of sliding doors, white glass, 150x236 cm', 5199000, 8, 2, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/404/0640492_PE699863_S4.jpg');
 
 -- --------------------------------------------------------
 
@@ -251,7 +268,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `kode_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `kode_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT for table `user`
