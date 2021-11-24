@@ -129,7 +129,7 @@ try {
     echo $e->getMessage();
 }
 
-// echo "snapToken = " . $snap_token;
+echo "snapToken = " . $snap_token;
 
 function printExampleWarningMessage()
 {
@@ -163,10 +163,7 @@ function printExampleWarningMessage()
                 // Optional
                 onSuccess: function(result) {
                     document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 1);
-                    // <?php $notif = new Notification();
-                        // echo $notif->order_id;
-                        // echo $notif->transaction_status; 
-                        ?>
+
                 },
                 // Optional
                 onPending: function(result) {
