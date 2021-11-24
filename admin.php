@@ -176,6 +176,11 @@ if (isset($_POST['logout'])) {
     <form action="" method="post">
         <button name="logout">logout</button>
     </form>
+    <br><br>
+    <form action="bulkAdding.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="bulkFile" id="">
+        <button name="bulkAdd">Bulk Add</button>
+    </form>
 </body>
 
 </html>
