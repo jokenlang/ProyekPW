@@ -65,7 +65,7 @@ if (isset($_POST['add'])) {
         <div class="card my-4 bg-dark">
             <div class="row text-light">
                 <div class="img-square-wrapper col-12 col-md-6">
-                    <img src="<?= $url ?>" alt="Card image cap" style="width:500px;height:500px">
+                    <img src="<?= $url ?>" alt="Card image cap" style="width:508px;height:508px">
                 </div>
                 <div class="card-body col-12 col-md-6 text-sm-center text-md-left" style="margin-top:150px; ">
                     <h4 class="card-title"><?= $nama ?></h4>
