@@ -13,7 +13,7 @@ if (isset($_POST['login'])) {
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="asset/logo.png" width="30" height="30" alt="">
+            <!-- <img src="asset/logo.png" width="30" height="30" alt=""> -->
             <div class="h2 text-white">AUTHENTICAL</div>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
