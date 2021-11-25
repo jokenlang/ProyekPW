@@ -2,7 +2,11 @@
 require_once('ahihi.php');
 require_once('connection.php');
 $produk = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASSOC);
-
+if (isset($_POST['login'])) {
+    // echo("test");
+    header('Location:login.php');
+    // http_redirect('login.php');
+}
 if (isset($_POST['add'])) {
     $kode_produk = $_POST['add'];
     $ketemu = false;
@@ -93,8 +97,8 @@ if (isset($_POST['detail'])) {
                         query: query
                     },
                     success: function(data) {
-                        // $('#dynamic_content').html(data);
-                        console.log(data);
+                        $('#dynamic_content').html(data);
+                        // console.log(data);
                     }
                 });
             }
