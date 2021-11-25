@@ -84,13 +84,13 @@ $page_link = '';
 
 //echo $total_links;
 
-if ($total_links > 4) {
+if ($total_links > 5) {
   if ($page < 5) {
     for ($count = 1; $count <= 5; $count++) {
       $page_array[] = $count;
     }
-    // $page_array[] = '...';
-    // $page_array[] = $total_links;
+    $page_array[] = '...';
+    $page_array[] = $total_links;
   } else {
     $end_limit = $total_links - 5;
     if ($page > $end_limit) {
