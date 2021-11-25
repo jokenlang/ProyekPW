@@ -1,4 +1,5 @@
 <?php
+require_once('ahihi.php');
 require_once('connection.php');
 
 $user = $conn->query("SELECT * From user")->fetch_all(MYSQLI_ASSOC);

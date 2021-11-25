@@ -31,6 +31,12 @@ span{
     background-color: greenyellow;
     /* color: white; */
 }
+.admin{
+    padding: 30px 30px;
+    border: none;
+    background-color: transparent;
+    /* background-color: black; */
+}
 .cb {
     clear: both;
 }
@@ -150,6 +156,8 @@ input[type=password]{
     opacity: 1;
     right: 0;
 }
+
+
 
 
 

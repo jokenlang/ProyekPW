@@ -1,0 +1,21 @@
+.cb{
+    clear: both;
+}
+.kiri{
+    float: left;    
+    width: 15%;
+    background-color: red;
+    height: 100vh;
+}
+.tengah{
+    float: left;
+    width: 70%;
+    background-color: yellow;
+    height: 100vh;
+}
+.kanan{
+    float: left;
+    width: 15%;
+    background-color: green;
+    height: 100vh;
+}

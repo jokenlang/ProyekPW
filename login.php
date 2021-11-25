@@ -1,4 +1,5 @@
 <?php
+require_once('ahihi.php');
 require_once('connection.php');
 $listUser = $conn->query("SELECT * From user")->fetch_all(MYSQLI_ASSOC);
 
@@ -27,6 +28,10 @@ if (isset($_POST['home'])) {
     header('Location: index.php');
 }
 
+if (isset($_POST['admin'])) {
+    header('Location: loginAdmin.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +45,9 @@ if (isset($_POST['home'])) {
 </head>
 
 <body>
+    <form action="" method="post">
+        <button name="admin" value="admin" class="admin"></button>
+    </form>
     <div class="banner">
         <div class="bangunan"></div>
         <div class="container">
@@ -65,6 +73,7 @@ if (isset($_POST['home'])) {
                             <button value="Login" name="login" class="login"><span>Login</span></button>
                             <button name="register" value="register" class="register"><span>Register </span></button>
                             <button name="home" value="home" class="home"><span>Home </span></button>
+                            
                         </div>
                     </form>
                 </div>

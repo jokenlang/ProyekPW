@@ -1,4 +1,5 @@
 <?php
+require_once('ahihi.php');
 require_once('connection.php');
 if (isset($_SESSION['cart'])) {
     $cart = $_SESSION['cart'];

@@ -1,4 +1,5 @@
 <?php
+require_once('ahihi.php');
 require_once('connection.php');
 $kategori = $conn->query("SELECT * From kategori")->fetch_all(MYSQLI_ASSOC);
 
