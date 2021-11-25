@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
         header('Location:index.php');
         $_SESSION['idxUser'] = $idxUser;
     } else {
-        alert('Wrong usernmae or password');
+        alert('Wrong username or password');
     }
 }
 

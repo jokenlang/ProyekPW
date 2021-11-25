@@ -6,7 +6,9 @@ if (isset($_POST['logout'])) {
 }
 
 if (isset($_POST['login'])) {
+    // echo("test");
     header('Location:login.php');
+    // http_redirect('login.php');
 }
 
 ?>
@@ -32,7 +34,7 @@ if (isset($_POST['login'])) {
                     <a class="nav-link text-light" href="aboutUs.php">About Us</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0" method="POST">
+            <form class="form-inline my-2 my-lg-0" method="POST" action="#">
                 <a href="cart.php" class="nav-link text-light"><img src="asset/cart.png" alt=""></a>
                 <?php
                 if (isset($_SESSION['idxUser'])) {
@@ -43,7 +45,9 @@ if (isset($_POST['login'])) {
                     <a class="nav-link text-light" href="">Welcome, <?= $user['nama_user'] ?></a>
                     <button class="btn btn-danger" value="logout" name="logout">Logout</button>
                 <?php } else { ?>
-                    <button class="btn btn-primary" value="login" name="login">Login Now</button>
+                    <!-- <a href="login.php"> -->
+                        <button class="btn btn-primary" value="login" name="login">Login Now</button>
+                    <!-- </a> -->
                 <?php } ?>
             </form>
 

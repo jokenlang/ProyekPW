@@ -6,6 +6,11 @@ if (isset($_POST['pilihCat'])) {
     $_SESSION['idxKategori'] = $_POST['pilihCat'];
     header('Location:allProductfromCat.php');
 }
+if (isset($_POST['login'])) {
+    // echo("test");
+    header('Location:login.php');
+    // http_redirect('login.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

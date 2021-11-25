@@ -8,7 +8,7 @@ if (isset($_SESSION['idxProduk'])) {
 } else {
     header('Location:allProduct.php');
 }
-$stmt = $conn->query("SELECT * FROM PRODUK WHERE kode_produk = '$idxProduk'");
+$stmt = $conn->query("SELECT * FROM produk WHERE kode_produk = '$idxProduk'");
 $produk = $stmt->fetch_assoc();
 $url = $produk['url_gambar'];
 $nama = strtoUpper($produk['nama_produk']);
