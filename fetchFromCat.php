@@ -42,7 +42,7 @@ if ($total_data > 0) {
     $kode = $value['kode_produk'];
     $output .= "
     <div class='card col-12 col-md-3 m-1 m-md-4'>
-                    <img class='card-img-top' src='$url' alt='Card image cap'>
+                    <img class='card-img-top' src='".$url."' alt='Card image cap'>
                     <div class='card-body'>
                         <h5 class='card-title'>$nama</h5>
                         <p class='card-text'>$desc</p>
@@ -165,3 +165,4 @@ if ($total_data > 0) {
 
 
 echo $output;
+

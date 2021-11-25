@@ -12,7 +12,7 @@
     <?php include('header.php'); ?>
     <div class="kiri"></div>
     <div class="tengah">
-
+        
     </div>
     <div class="kanan"></div>
     <div class="cb"></div>

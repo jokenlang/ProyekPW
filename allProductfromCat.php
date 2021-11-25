@@ -86,14 +86,15 @@ if (isset($_POST['detail'])) {
 
             function load_data(page, query = '') {
                 $.ajax({
-                    url: "fetchfromCat.php",
+                    url: "fetchFromCat.php",
                     method: "POST",
                     data: {
                         page: page,
                         query: query
                     },
                     success: function(data) {
-                        $('#dynamic_content').html(data);
+                        // $('#dynamic_content').html(data);
+                        console.log(data);
                     }
                 });
             }
