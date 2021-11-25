@@ -154,6 +154,8 @@ function printExampleWarningMessage()
     <button id="pay-button">Pay Now</button>
     <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre>
 
+
+    <script src="./../jquery-3.4.1.min.js"></script>
     <!-- TODO: Remove ".sandbox" from script src URL for production environment. Also input your client key in "data-client-key" -->
     <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="<?php echo Config::$clientKey; ?>"></script>
     <script type="text/javascript">
@@ -162,13 +164,38 @@ function printExampleWarningMessage()
             snap.pay('<?php echo $snap_token ?>', {
                 // Optional
                 onSuccess: function(result) {
-                    document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 1);
+                    // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                    $.ajax({
+                        method: "POST",
+                        url: "action.php",
+                        data: {
+                            checkout: JSON.stringify(result, null, 2),
+                            action: "kirimOrder"
+                        },
+                        success: function(response) {
+                            $(document.body).html("");
+                            $(document.body).html(response);
 
+                        }
+                    });
                 },
                 // Optional
                 onPending: function(result) {
                     /* You may add your own js here, this is just example */
-                    document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                    // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                    $.ajax({
+                        method: "POST",
+                        url: "action.php",
+                        data: {
+                            checkout: JSON.stringify(result, null, 2),
+                            action: "kirimOrder"
+                        },
+                        success: function(response) {
+                            $(document.body).html("");
+                            $(document.body).html(response);
+
+                        }
+                    });
                 },
                 // Optional
                 onError: function(result) {
@@ -178,6 +205,7 @@ function printExampleWarningMessage()
             });
         };
     </script>
+    <script src="./../jquery-3.4.1.min.js"></script>
 </body>
 
 </html>
