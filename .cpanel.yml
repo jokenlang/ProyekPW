@@ -1,0 +1,26 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/tstingp/public_html/
+    - /bin/cp aboutUs.php $DEPLOYPATH
+    - /bin/cp admin.php $DEPLOYPATH
+    - /bin/cp ahihi.php $DEPLOYPATH
+    - /bin/cp allProduct.php $DEPLOYPATH
+    - /bin/cp allProductfromCat.php $DEPLOYPATH
+    - /bin/cp ambil-data.php $DEPLOYPATH
+    - /bin/cp bulkAdding.php $DEPLOYPATH
+    - /bin/cp cart.php $DEPLOYPATH
+    - /bin/cp connection.php $DEPLOYPATH
+    - /bin/cp detailProduct.php $DEPLOYPATH
+    - /bin/cp fetch.php $DEPLOYPATH
+    - /bin/cp fetchFromCat.php $DEPLOYPATH
+    - /bin/cp footer.php $DEPLOYPATH
+    - /bin/cp header.php $DEPLOYPATH
+    - /bin/cp index.php $DEPLOYPATH
+    - /bin/cp login.php $DEPLOYPATH
+    - /bin/cp loginAdmin.php $DEPLOYPATH
+    - /bin/cp Midtrans.php $DEPLOYPATH
+    - /bin/cp register.php $DEPLOYPATH
+    - /bin/cp -R asset $DEPLOYPATH
+    - /bin/cp -R Midtrans $DEPLOYPATH
+    - /bin/cp -R snap $DEPLOYPATH
