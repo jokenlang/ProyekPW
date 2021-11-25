@@ -15,9 +15,14 @@ if (isset($_POST['remove'])) {
 
 if (isset($_POST['tambahQty'])) {
     $key = $_POST['tambahQty'];
-    $cart[$key]['qty']++;
-    $cart[$key]['subtotal'] = $cart[$key]['qty'] * $cart[$key]['harga_produk'];
-    $_SESSION['cart'] = $cart;
+    if ($cart[$key]['qty'] < 9) {
+        $cart[$key]['qty']++;
+        $cart[$key]['subtotal'] = $cart[$key]['qty'] * $cart[$key]['harga_produk'];
+        $_SESSION['cart'] = $cart;
+    }
+    // $cart[$key]['qty']++;
+    // $cart[$key]['subtotal'] = $cart[$key]['qty'] * $cart[$key]['harga_produk'];
+    // $_SESSION['cart'] = $cart;
 }
 
 if (isset($_POST['kurangiQty'])) {
@@ -80,7 +85,7 @@ if (isset($_POST['checkout'])) {
                                 <form action="" method="POST" class="row">
                                     <button name="kurangiQty" value="<?= $key ?>" class="btn btn-dark col-4">-</button>
                                     <button class="btn col-3 p-1"><?= $value['qty'] ?></button>
-                                    <button name="tambahQty col-3" value="<?= $key ?>" class="btn btn-dark">+</button>
+                                    <button name="tambahQty" value="<?= $key ?>" class="btn btn-dark col-4">+</button>
                                 </form>
                             </td>
                             <td>Rp. <?= number_format($value['subtotal'], 0, '.', '.') ?></td>

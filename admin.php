@@ -4,7 +4,7 @@ require_once('connection.php');
 $kategori = $conn->query("SELECT * From kategori")->fetch_all(MYSQLI_ASSOC);
 
 //pagination
-$jumlahDataperHal = 1;
+$jumlahDataperHal = 6;
 $res = mysqli_query($conn, "select * from produk");
 $jumlahData = mysqli_num_rows($res);
 $jumlahHal = ceil($jumlahData / $jumlahDataperHal);
@@ -144,7 +144,7 @@ if (isset($_POST['logout'])) {
             </tr>
         <?php } ?>
     </table>
-    
+
 
 
     <!-- Navigasi -->

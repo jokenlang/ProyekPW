@@ -41,6 +41,11 @@ if (isset($_POST['add'])) {
     ];
     header('Location:cart.php');
 }
+
+if (isset($_POST['cancel'])) {
+    unset($_SESSION['idxProduk']);
+    header('Location:allProduct.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,6 +83,7 @@ if (isset($_POST['add'])) {
                         <button class="btn  mx-0" style="color:white; background-color:transparent"><?= $qty ?></button>
                         <button name="tambahQty" value="<?= $qty ?>" class="btn btn-light">+</button>
                         <button class="btn btn-success ml-2" name="add" value="<?= $idxProduk ?>">Add to Cart</button>
+                        <button class="btn btn-danger ml-2" name="cancel" value="<?= $idxProduk ?>">Cancel</button>
                     </form>
                 </div>
             </div>

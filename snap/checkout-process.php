@@ -106,7 +106,7 @@ $customer_details = array(
 foreach ($cart as $key => $value) {
     $item['item'][] = [
         'id' => $value['kode_produk'],
-        'name' => $value['nama_produk'],
+        'name' => strtoUpper($value['nama_produk']),
         'price' => $value['harga_produk'],
         'quantity' => $value['qty']
     ];
