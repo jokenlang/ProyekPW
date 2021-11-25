@@ -2,18 +2,6 @@
 
 $connect = new PDO("mysql:host=localhost; dbname=furniture_website", "root", "");
 
-/*function get_total_row($connect)
-{
-  $query = "
-  SELECT * FROM tbl_webslesson_post
-  ";
-  $statement = $connect->prepare($query);
-  $statement->execute();
-  return $statement->rowCount();
-}
-
-$total_record = get_total_row($connect);*/
-
 $limit = '6';
 $page = 1;
 if ($_POST['page'] > 1) {
