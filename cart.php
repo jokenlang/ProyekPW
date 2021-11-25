@@ -28,6 +28,13 @@ if (isset($_POST['kurangiQty'])) {
     }
 }
 
+if (isset($_POST['checkout'])) {
+    if (isset($_SESSION['idxUser'])) {
+        header('Location:snap/checkout-process.php');
+    } else {
+        header('Location:login.php');
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -52,8 +59,8 @@ if (isset($_POST['kurangiQty'])) {
             <thead>
                 <tr>
                     <th scope="col">Merk</th>
-                    <th scope="col">Desc</th>
-                    <th scope="col">Qty</th>
+                    <th scope="col" class="d-none d-md-block">Desc</th>
+                    <th scope="col-5">Qty</th>
                     <th scope="col">Subtotal</th>
                     <th scope="col"></th>
                 </tr>
@@ -67,12 +74,12 @@ if (isset($_POST['kurangiQty'])) {
                                 <img src="<?= $value['url_gambar'] ?>" alt="" style="width: 50px;height: 50px;">
                                 <?= strtoUpper($value['nama_produk']) ?>
                             </td>
-                            <td><?= $value['desc_produk'] ?></td>
+                            <td class="d-none d-md-block"><?= $value['desc_produk'] ?></td>
                             <td>
-                                <form action="" method="POST">
-                                    <button name="kurangiQty" value="<?= $key ?>" class="btn btn-dark">-</button>
-                                    <button class="btn"><?= $value['qty'] ?></button>
-                                    <button name="tambahQty" value="<?= $key ?>" class="btn btn-dark">+</button>
+                                <form action="" method="POST" class="row">
+                                    <button name="kurangiQty" value="<?= $key ?>" class="btn btn-dark col-4">-</button>
+                                    <button class="btn col-3 p-1"><?= $value['qty'] ?></button>
+                                    <button name="tambahQty col-3" value="<?= $key ?>" class="btn btn-dark">+</button>
                                 </form>
                             </td>
                             <td>Rp. <?= number_format($value['subtotal'], 0, '.', '.') ?></td>
@@ -93,15 +100,21 @@ if (isset($_POST['kurangiQty'])) {
         </table>
 
         <div class="container">
-            <form action="snap/checkout-process.php" method="POST">
+            <form action="" method="POST">
                 <button id="pay-button" name="checkout" value="checkout" class="btn btn-dark float-right my-3">>> Checkout</button>
-                <input type="hidden" name="amount" value="<?= $total ?>">
+                <?php
+                $_SESSION['total'] = $total;
+                ?>
+                <!-- <input type="hidden" name="amount" value="<?= $total ?>"> -->
             </form>
         </div>
         <div style="clear:both"></div>
     </div>
 
     <?php include('footer.php') ?>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

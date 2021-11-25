@@ -29,8 +29,8 @@ Config::$is3ds = true;
 // Config::$overrideNotifUrl = "https://example.com";
 
 // Required
-$total = $_POST['amount'];
-
+$total = $_SESSION['total'];
+echo $total;
 $transaction_details = array(
     'order_id' => rand(),
     'gross_amount' => $total, // no decimal allowed for creditcard
@@ -88,7 +88,7 @@ $customer_details = array(
 );
 
 // Optional, remove this to display all available payment methods
-$enable_payments = array('credit_card', 'cimb_clicks', 'mandiri_clickpay', 'echannel');
+$enable_payments = array('bca_va', 'cimb_clicks', 'mandiri_clickpay', 'echannel');
 
 // Fill transaction details
 $cart = $_SESSION['cart'];
@@ -151,7 +151,7 @@ function printExampleWarningMessage()
 
 <body>
     <h1>Do you really want to checkout?</h1>
-    <button id="pay-button">Pay!</button>
+    <button id="pay-button">Pay Now</button>
     <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre>
 
     <!-- TODO: Remove ".sandbox" from script src URL for production environment. Also input your client key in "data-client-key" -->

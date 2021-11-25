@@ -47,7 +47,7 @@ $total_filter_data = $statement->rowCount();
 
 $output = "<form method='post'><div class='container'><label>Total Records - $total_data</label>
 ";
-$output .= "<div class='row mx-auto'>";
+$output .= "<div class='row px-2'>";
 
 if ($total_data > 0) {
   foreach ($result as $value) {
@@ -57,15 +57,15 @@ if ($total_data > 0) {
     $harga = 'Rp.' . number_format($value["harga_produk"], 0, ',', '.');
     $kode = $value['kode_produk'];
     $output .= "
-    <div class='card col-12 col-sm-5 col-md-3 m-1 m-md-4'>
+    <div class='card col-12 col-md-3 m-1 m-md-4'>
                     <img class='card-img-top' src='$url' alt='Card image cap'>
                     <div class='card-body'>
                         <h5 class='card-title'>$nama</h5>
                         <p class='card-text'>$desc</p>
                         <p class='card-text font-weight-bold'>$harga</p>
                         <form method='post'>
-                        <button href='#' class='btn btn-success' value='$kode' name='detail'>Detail</button>
-                        <button href='#' class='btn btn-dark' value='$kode' name='add'>Add to Cart</button>
+                        <button href='#' class='btn btn-dark' value='$kode' name='detail'>Detail</button>
+                        <button href='#' class='btn btn-success' value='$kode' name='add'>Add to Cart</button>
                         </form>
                         </div>
     </div>
