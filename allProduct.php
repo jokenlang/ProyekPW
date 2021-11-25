@@ -10,17 +10,28 @@ $produk = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASSOC);
 
 if (isset($_POST['add'])) {
     $kode_produk = $_POST['add'];
-    $q = $conn->query("SELECT * FROM produk WHERE kode_produk='$kode_produk'");
-    $produk = $q->fetch_assoc();
-    $_SESSION['cart'][] = [
-        'kode_produk' => $kode_produk,
-        'nama_produk' => $produk['nama_produk'],
-        'desc_produk' => $produk['desc_produk'],
-        'harga_produk' => (int)($produk['harga_produk']),
-        'url_gambar' => $produk['url_gambar'],
-        'qty' => 1,
-        'subtotal' => $produk['harga_produk']
-    ];
+    $ketemu = false;
+    foreach ($_SESSION['cart'] as $key => $value) {
+        if ($kode_produk == $value['kode_produk']) {
+            $ketemu = true;
+            $cart = $_SESSION['cart'];
+            $cart[$key]['qty']++;
+            $_SESSION['cart'] = $cart;
+        }
+    }
+    if (!$ketemu) {
+        $q = $conn->query("SELECT * FROM produk WHERE kode_produk='$kode_produk'");
+        $produk = $q->fetch_assoc();
+        $_SESSION['cart'][] = [
+            'kode_produk' => $kode_produk,
+            'nama_produk' => $produk['nama_produk'],
+            'desc_produk' => $produk['desc_produk'],
+            'harga_produk' => (int)($produk['harga_produk']),
+            'url_gambar' => $produk['url_gambar'],
+            'qty' => 1,
+            'subtotal' => $produk['harga_produk']
+        ];
+    }
     header('Location:cart.php');
 }
 

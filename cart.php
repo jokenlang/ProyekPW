@@ -20,9 +20,6 @@ if (isset($_POST['tambahQty'])) {
         $cart[$key]['subtotal'] = $cart[$key]['qty'] * $cart[$key]['harga_produk'];
         $_SESSION['cart'] = $cart;
     }
-    // $cart[$key]['qty']++;
-    // $cart[$key]['subtotal'] = $cart[$key]['qty'] * $cart[$key]['harga_produk'];
-    // $_SESSION['cart'] = $cart;
 }
 
 if (isset($_POST['kurangiQty'])) {

@@ -17,7 +17,9 @@ $harga = number_format($produk['harga_produk'], 0, '.', '.');
 
 if (isset($_POST['tambahQty'])) {
     $qty = $_POST['qty'];
-    $qty++;
+    if ($qty < 9) {
+        $qty++;
+    }
 } else if (isset($_POST['kurangiQty'])) {
     $qty = $_POST['qty'];
     if ($qty > 1) {
@@ -27,18 +29,29 @@ if (isset($_POST['tambahQty'])) {
 
 if (isset($_POST['add'])) {
     $kode_produk = $_POST['add'];
-    $q = $conn->query("SELECT * FROM produk WHERE kode_produk='$kode_produk'");
-    $produk = $q->fetch_assoc();
     $qty = $_POST['qty'];
-    $_SESSION['cart'][] = [
-        'kode_produk' => $kode_produk,
-        'nama_produk' => $produk['nama_produk'],
-        'desc_produk' => $produk['desc_produk'],
-        'harga_produk' => (int)($produk['harga_produk']),
-        'url_gambar' => $produk['url_gambar'],
-        'qty' => $qty,
-        'subtotal' => $produk['harga_produk']
-    ];
+    $ketemu = false;
+    foreach ($_SESSION['cart'] as $key => $value) {
+        if ($kode_produk == $value['kode_produk']) {
+            $ketemu = true;
+            $cart = $_SESSION['cart'];
+            $cart[$key]['qty'] += $qty;
+            $_SESSION['cart'] = $cart;
+        }
+    }
+    if (!$ketemu) {
+        $q = $conn->query("SELECT * FROM produk WHERE kode_produk='$kode_produk'");
+        $produk = $q->fetch_assoc();
+        $_SESSION['cart'][] = [
+            'kode_produk' => $kode_produk,
+            'nama_produk' => $produk['nama_produk'],
+            'desc_produk' => $produk['desc_produk'],
+            'harga_produk' => (int)($produk['harga_produk']),
+            'url_gambar' => $produk['url_gambar'],
+            'qty' => $qty,
+            'subtotal' => $produk['harga_produk']
+        ];
+    }
     header('Location:cart.php');
 }
 
