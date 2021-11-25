@@ -7,7 +7,11 @@ $produk = $conn->query("SELECT * From produk")->fetch_all(MYSQLI_ASSOC);
     $query = "SELECT * From produk where nama_produk like'%$keyword%'";
     $hasil = mysqli_query($conn, $query);
 }*/
-
+if (isset($_POST['login'])) {
+    // echo("test");
+    header('Location:login.php');
+    // http_redirect('login.php');
+}
 if (isset($_POST['add'])) {
     $kode_produk = $_POST['add'];
     $ketemu = false;

@@ -1,3 +1,10 @@
+<?php
+if (isset($_POST['login'])) {
+    // echo("test");
+    header('Location:login.php');
+    // http_redirect('login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +19,7 @@
     <?php include('header.php'); ?>
     <div class="kiri"></div>
     <div class="tengah">
-        
+
     </div>
     <div class="kanan"></div>
     <div class="cb"></div>
