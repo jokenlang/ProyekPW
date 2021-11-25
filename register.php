@@ -19,21 +19,21 @@ if (isset($_POST['register'])) {
         $found = true;
     }
     if ($found) {
-        alert('Username telah terpakai');
+        alert('Username already used');
     } else if ($confirm != $password) {
-        alert('Password dan Confirm Password harus sama');
+        alert('Password and Confirm Password must be same');
     } else if ($username == "" || $confirm == "" || $password == "" || $email == "" || $nama == "") {
-        alert('Semua Field harus diisi');
+        alert('All field must be filled');
     } else {
         $saldo = 1000000;
         $stmt = $conn->prepare("INSERT INTO `user` (`username_user`, `password_user`, `nama_user`, `email_user`,`saldo_user`) VALUES (?,?,?,?,?)");
         $stmt->bind_param("ssssi", $username, $password, $nama, $email, $saldo);
         $result = $stmt->execute();
         if ($result) {
-            alert('Berhasil Register');
+            alert('Register an user');
             header('Location:login.php');
         } else {
-            alert('Gagal Register');
+            alert('Register failed');
         }
     }
 }
@@ -43,7 +43,7 @@ if (isset($_POST['login'])) {
 }
 
 
-if(isset($_POST['home'])){
+if (isset($_POST['home'])) {
     header('Location: index.php');
 }
 ?>

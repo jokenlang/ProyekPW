@@ -9,17 +9,10 @@ if (isset($_POST['register'])) {
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $idxUser = -1;
-    foreach ($listUser as $key => $val) {
-        if ($username == $val['username_user'] && $password == $val['password_user']) {
-            $idxUser = $val['kode_user'];
-        }
-    }
-    if ($idxUser != -1) {
-        header('Location:index.php');
-        $_SESSION['idxUser'] = $idxUser;
+    if ($username == "admin" && $password == "admin") {
+        header('Location:admin.php');
     } else {
-        alert('Wrong usernmae or password');
+        alert('Login Failed');
     }
 }
 
@@ -46,7 +39,7 @@ if (isset($_POST['home'])) {
             <div class="apalah">
                 <div class="atas">
                     <!-- <div class="kiri"></div> -->
-                    <h1>Login</h1>
+                    <h1>Login for Admin</h1>
                     <div class="kanan">
                     </div>
                 </div>
