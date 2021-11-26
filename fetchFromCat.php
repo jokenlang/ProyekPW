@@ -1,6 +1,7 @@
 <?php
 
 $connect = new PDO("mysql:host=localhost; dbname=furniture_website", "root", "");
+// $connect = new PDO("mysql:host=localhost; dbname=tstingp_furniture_website", "tstingp_zie", "2207kenzie");
 session_start();
 
 $limit = '6';

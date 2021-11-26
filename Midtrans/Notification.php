@@ -14,11 +14,11 @@ echo $notif->transaction_status;
  * 
  *   namespace Midtrans;
  * 
- *   $notif = new Notification();
- *   echo $notif->order_id;
- *   echo $notif->transaction_status;
  * ```
  */
+$notif = new Notification();
+echo $notif->order_id;
+echo $notif->transaction_status;
 class Notification
 {
     private $response;
