@@ -3,7 +3,6 @@ require_once('connection.php');
 $idxUser = $_SESSION['idxUser'];
 $order_id = $_SESSION['order_id'];
 $dtrans = $conn->query("SELECT * From dtrans where order_id = '$order_id'")->fetch_all(MYSQLI_ASSOC);
-print_r($dtrans);
 ?>
 
 <!DOCTYPE html>
@@ -25,9 +24,43 @@ print_r($dtrans);
     </div>
 
     <div class="container">
-        <?php foreach ($dtrans as $key => $value) { ?>
-            
-        <?php } ?>
+        <table class="table">
+            <thead class="bg-info text-light">
+                <tr>
+                    <th scope="col">MERK</th>
+                    <th scope="col" class="d-none d-md-block">DESCRIPTION</th>
+                    <th scope="col">QUANTITY</th>
+                    <th scope="col">SUBTOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $total = 0; ?>
+                <?php if ($dtrans != null) { ?>
+                    <?php foreach ($dtrans as $key => $value) { ?>
+                        <?php
+                        $kode_produk = $value['kode_produk'];
+                        $stmt = $conn->query("SELECT * FROM produk WHERE kode_produk = '$kode_produk'");
+                        $produk = $stmt->fetch_assoc();
+                        ?>
+                        <tr>
+                            <td>
+                                <img src="<?= $produk['url_gambar'] ?>" alt="" style="width: 50px;height: 50px;">
+                                <?= strtoUpper($produk['nama_produk']) ?>
+                            </td>
+                            <td class="d-none d-md-block"><?= $produk['desc_produk'] ?></td>
+                            <td><?= $value['qty'] ?></td>
+                            <?php $subtotal = $value['qty'] * $produk['harga_produk'] ?>
+                            <td>Rp. <?= number_format($subtotal, 0, '.', '.') ?></td>
+                            <?php $total += $subtotal; ?>
+                        </tr>
+                    <?php } ?>
+                <?php } ?>
+                <tr>
+                    <td colspan="3" class="font-weight-bold text-danger">TOTAL</td>
+                    <td class="font-weight-bold h5">Rp. <?= number_format($total, 0, ',', '.') ?></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <?php include('footer.php'); ?>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
