@@ -33,6 +33,11 @@ if (isset($_POST['login'])) {
                 <li class="nav-item">
                     <a class="nav-link text-light" href="aboutUs.php">About Us</a>
                 </li>
+                <?php if (isset($_SESSION['idxUser'])) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="historyUser.php">History</a>
+                    </li>
+                <?php } ?>
             </ul>
             <form class="form-inline my-2 my-lg-0" method="POST" action="#">
                 <a href="cart.php" class="nav-link text-light"><img src="asset/cart.png" alt=""></a>
@@ -46,7 +51,7 @@ if (isset($_POST['login'])) {
                     <button class="btn btn-danger" value="logout" name="logout">Logout</button>
                 <?php } else { ?>
                     <!-- <a href="login.php"> -->
-                        <button class="btn btn-primary" value="login" name="login">Login Now</button>
+                    <button class="btn btn-primary" value="login" name="login">Login Now</button>
                     <!-- </a> -->
                 <?php } ?>
             </form>
