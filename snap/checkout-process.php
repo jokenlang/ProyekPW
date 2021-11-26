@@ -29,7 +29,7 @@ Config::$is3ds = true;
 // Config::$overrideNotifUrl = "https://example.com";
 
 // Required
-$total = $_SESSION['total'];
+$total = (int) $_SESSION['total'];
 echo $total;
 $transaction_details = array(
     'order_id' => rand(),
@@ -165,19 +165,7 @@ function printExampleWarningMessage()
                 // Optional
                 onSuccess: function(result) {
                     // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                    $.ajax({
-                        method: "POST",
-                        url: "action.php",
-                        data: {
-                            checkout: JSON.stringify(result, null, 2),
-                            action: "kirimOrder"
-                        },
-                        success: function(response) {
-                            $(document.body).html("");
-                            $(document.body).html(response);
-
-                        }
-                    });
+                    alert("Berhasil");
                 },
                 // Optional
                 onPending: function(result) {
