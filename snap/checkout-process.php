@@ -30,7 +30,6 @@ Config::$is3ds = true;
 
 // Required
 $total = (int) $_SESSION['total'];
-echo $total;
 $transaction_details = array(
     'order_id' => rand(),
     'gross_amount' => $total, // no decimal allowed for creditcard
@@ -112,7 +111,8 @@ foreach ($cart as $key => $value) {
     ];
 }
 $item_details = $item['item'];
-var_dump($item_details);
+// var_dump($item_details);
+// print_r($_SESSION['cart']);
 $transaction = array(
     'enabled_payments' => $enable_payments,
     'transaction_details' => $transaction_details,
@@ -175,7 +175,7 @@ function printExampleWarningMessage()
                         method: "POST",
                         url: "action.php",
                         data: {
-                            checkout: JSON.stringify(result, null, 2),
+                            order: JSON.stringify(result, null, 2),
                             action: "kirimOrder"
                         },
                         success: function(response) {

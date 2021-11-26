@@ -15,6 +15,7 @@ if (isset($_POST['add'])) {
             $ketemu = true;
             $cart = $_SESSION['cart'];
             $cart[$key]['qty']++;
+            $cart[$key]['subtotal'] = $cart[$key]['qty'] * $cart[$key]['harga_produk'];
             $_SESSION['cart'] = $cart;
         }
     }

@@ -2,9 +2,6 @@
 
 namespace Midtrans;
 
-$notif = new Notification();
-echo $notif->order_id;
-echo $notif->transaction_status;
 /**
  * Read raw post input and parse as JSON. Provide getters for fields in notification object
  *
@@ -16,9 +13,6 @@ echo $notif->transaction_status;
  * 
  * ```
  */
-$notif = new Notification();
-echo $notif->order_id;
-echo $notif->transaction_status;
 class Notification
 {
     private $response;
