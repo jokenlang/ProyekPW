@@ -4,18 +4,20 @@
 .kiri{
     float: left;    
     width: 15%;
-    background-color: red;
+    /* background-color: red; */
     height: 100vh;
 }
 .tengah{
     float: left;
     width: 70%;
-    background-color: yellow;
+    /* background-color: yellow; */
     height: 100vh;
+    border-left: 0.1px solid rgb(238, 238, 238);
+    border-right: 0.1px solid rgb(238, 238, 238);
 }
 .kanan{
     float: left;
     width: 15%;
-    background-color: green;
+    /* background-color: green; */
     height: 100vh;
 }
