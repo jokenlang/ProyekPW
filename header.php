@@ -3,6 +3,7 @@ require_once('connection.php');
 
 if (isset($_POST['logout'])) {
     unset($_SESSION['idxUser']);
+    header('Location:index.php');
 }
 
 if (isset($_POST['login'])) {
