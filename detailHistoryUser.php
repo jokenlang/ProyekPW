@@ -28,7 +28,7 @@ $dtrans = $conn->query("SELECT * From dtrans where order_id = '$order_id'")->fet
             <thead class="bg-info text-light">
                 <tr>
                     <th scope="col">MERK</th>
-                    <th scope="col" class="d-none d-md-block">DESCRIPTION</th>
+                    <th scope="col">DESCRIPTION</th>
                     <th scope="col">QUANTITY</th>
                     <th scope="col">SUBTOTAL</th>
                 </tr>
@@ -47,7 +47,7 @@ $dtrans = $conn->query("SELECT * From dtrans where order_id = '$order_id'")->fet
                                 <img src="<?= $produk['url_gambar'] ?>" alt="" style="width: 50px;height: 50px;">
                                 <?= strtoUpper($produk['nama_produk']) ?>
                             </td>
-                            <td class="d-none d-md-block"><?= $produk['desc_produk'] ?></td>
+                            <td><?= $produk['desc_produk'] ?></td>
                             <td><?= $value['qty'] ?></td>
                             <?php $subtotal = $value['qty'] * $produk['harga_produk'] ?>
                             <td>Rp. <?= number_format($subtotal, 0, '.', '.') ?></td>
