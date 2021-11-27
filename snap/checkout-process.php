@@ -219,16 +219,11 @@ function printExampleWarningMessage()
                 </div>
             </div>
         </div>
+        <form action="../typage.html" id="typage" method="post">
+
+        </form>
 
     </div>
-
-
-
-
-
-    <!-- <h1>Do you really want to checkout?</h1> -->
-
-    <!-- <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre> -->
 
     <?php include('../footer.php') ?>
     <script src="./../jquery-3.4.1.min.js"></script>
@@ -241,7 +236,7 @@ function printExampleWarningMessage()
                 // Optional
                 onSuccess: function(result) {
                     // document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                    alert("Berhasil");
+                    // alert("Berhasil");
                 },
                 // Optional
                 onPending: function(result) {
@@ -255,7 +250,9 @@ function printExampleWarningMessage()
                             action: "kirimOrder"
                         },
                         success: function(response) {
-                            $(document.body).html("");
+                            //$(document.body).html("");
+                            // $(document.body).html(response);
+                            $("#typage").submit();
                         }
                     });
                 },

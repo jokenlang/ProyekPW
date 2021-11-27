@@ -48,7 +48,7 @@ if (isset($_POST['login'])) {
                     $stmt = $conn->query("SELECT * FROM user WHERE kode_user='$idxUser'");
                     $user = $stmt->fetch_assoc();
                 ?>
-                    <a class="nav-link text-light" href="">Welcome, <?= $user['nama_user'] ?></a>
+                    <a class="nav-link text-light" href="">Hi, <?= strtoUpper($user['nama_user']) ?></a>
                     <button class="btn btn-danger" value="logout" name="logout">Logout</button>
                 <?php } else { ?>
                     <!-- <a href="login.php"> -->
