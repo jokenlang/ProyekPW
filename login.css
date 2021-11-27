@@ -225,9 +225,6 @@ input[type=password]{
 }
 
 @media (max-width: 900px){
-    .banner2{
-        /* border:none; */
-    }
     .banner .bangunan{
         border-radius: 10px 10px 0px 0px;
         background-size: cover;
