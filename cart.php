@@ -6,7 +6,11 @@ if (isset($_SESSION['cart'])) {
 } else {
     $cart = null;
 }
-
+if (isset($_POST['login'])) {
+    // echo("test");
+    header('Location:login.php');
+    // http_redirect('login.php');
+}
 if (isset($_POST['remove'])) {
     $key = $_POST['remove'];
     unset($_SESSION['cart'][$key]);

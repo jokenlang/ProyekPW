@@ -68,7 +68,7 @@ if (isset($_POST['detail'])) {
     <div class="container">
         <span class="text-dark my-3 font-weight-bold" style="font-size: 2em;">Products</span>
         <form class="form-inline my-3" method="POST" style="float: right;">
-            <input class="form-control mr-sm-2" style="float: right;" type="search" placeholder="Search" aria-label="Search" id="search">
+            <input class="form-control mr-sm-2" style="float: right; " type="search" placeholder="Search" aria-label="Search" id="search">
             <!-- <button class="btn btn-primary my-2 my-sm-0" type="submit" name="searchName">Search</button> -->
         </form>
     </div>
