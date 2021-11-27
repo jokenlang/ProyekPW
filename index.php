@@ -144,8 +144,8 @@ if (isset($_POST['detail'])) {
                         <p class='card-text'><?= $value['desc_produk'] ?></p>
                         <p class='card-text font-weight-bold'>Rp. <?= number_format($value['harga_produk'], 0, '.', '.') ?></p>
                         <form method='post'>
-                            <button href='#' class='btn btn-dark' value='$kode' name='detail'>Detail</button>
-                            <button href='#' class='btn btn-success' value='$kode' name='add'>Add to Cart</button>
+                            <button href='#' class='btn btn-dark' value="<?= $value['kode_produk'] ?>" name='detail'>Detail</button>
+                            <button href='#' class='btn btn-success' value="<?= $value['kode_produk'] ?>" name='add'>Add to Cart</button>
                         </form>
                     </div>
                 </div>
