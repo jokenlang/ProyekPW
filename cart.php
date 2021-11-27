@@ -100,7 +100,7 @@ if (isset($_POST['checkout'])) {
                     <?php } ?>
                 <?php } ?>
                 <tr>
-                    <td colspan="3" class="font-weight-bold text-danger">TOTAL</td>
+                    <td colspan="3" class="font-weight-bold text-danger" style="text-align:right">TOTAL</td>
                     <td class="font-weight-bold h5">Rp. <?= number_format($total, 0, ',', '.') ?></td>
                 </tr>
             </tbody>
