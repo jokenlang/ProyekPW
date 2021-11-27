@@ -31,8 +31,8 @@ if (isset($_POST['register'])) {
         $stmt->bind_param("ssssi", $username, $password, $nama, $email, $saldo);
         $result = $stmt->execute();
         if ($result) {
-            alert('Register an user');
-            header('Location:login.php');
+            echo "<script>alert('Register an user');</script>";
+            echo "<script>window.location = './login.php';</script>";
         } else {
             alert('Register failed');
         }
