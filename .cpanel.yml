@@ -16,16 +16,17 @@ deployment:
     - /bin/cp fetchFromCat.php $DEPLOYPATH
     - /bin/cp footer.php $DEPLOYPATH
     - /bin/cp header.php $DEPLOYPATH
+    - /bin/cp historyUser.php $DEPLOYPATH
     - /bin/cp index.php $DEPLOYPATH
+    - /bin/cp jquery-3.4.1.min.js $DEPLOYPATH
+    - /bin/cp login.css $DEPLOYPATH
     - /bin/cp login.php $DEPLOYPATH
     - /bin/cp loginAdmin.php $DEPLOYPATH
     - /bin/cp Midtrans.php $DEPLOYPATH
     - /bin/cp register.php $DEPLOYPATH
-    - /bin/cp jquery-3.4.1.min.js $DEPLOYPATH
     - /bin/cp style.css $DEPLOYPATH
-    - /bin/cp login.css $DEPLOYPATH
     - /bin/cp typage.css $DEPLOYPATH
-    - /bin/cp typage.css $DEPLOYPATH
+    - /bin/cp typage.html $DEPLOYPATH
     - /bin/cp -R asset $DEPLOYPATH
     - /bin/cp -R Midtrans $DEPLOYPATH
     - /bin/cp -R snap $DEPLOYPATH
