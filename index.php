@@ -1,6 +1,7 @@
 <?php
 require_once('connection.php');
 $kategori = $conn->query("SELECT * From kategori")->fetch_all(MYSQLI_ASSOC);
+$produk = $conn->query("SELECT * From produk LIMIT 10")->fetch_all(MYSQLI_ASSOC);
 
 if (isset($_POST['pilihCat'])) {
     $_SESSION['idxKategori'] = $_POST['pilihCat'];
@@ -10,6 +11,39 @@ if (isset($_POST['login'])) {
     // echo("test");
     header('Location:login.php');
     // http_redirect('login.php');
+}
+
+if (isset($_POST['add'])) {
+    $kode_produk = $_POST['add'];
+    $ketemu = false;
+    foreach ($_SESSION['cart'] as $key => $value) {
+        if ($kode_produk == $value['kode_produk']) {
+            $ketemu = true;
+            $cart = $_SESSION['cart'];
+            $cart[$key]['qty']++;
+            $cart[$key]['subtotal'] = $cart[$key]['qty'] * $cart[$key]['harga_produk'];
+            $_SESSION['cart'] = $cart;
+        }
+    }
+    if (!$ketemu) {
+        $q = $conn->query("SELECT * FROM produk WHERE kode_produk='$kode_produk'");
+        $produk = $q->fetch_assoc();
+        $_SESSION['cart'][] = [
+            'kode_produk' => $kode_produk,
+            'nama_produk' => $produk['nama_produk'],
+            'desc_produk' => $produk['desc_produk'],
+            'harga_produk' => (int)($produk['harga_produk']),
+            'url_gambar' => $produk['url_gambar'],
+            'qty' => 1,
+            'subtotal' => $produk['harga_produk']
+        ];
+    }
+    header('Location:cart.php');
+}
+
+if (isset($_POST['detail'])) {
+    $_SESSION['idxProduk'] = $_POST['detail'];
+    header('Location:detailProduct.php');
 }
 ?>
 <!DOCTYPE html>
@@ -28,6 +62,10 @@ if (isset($_POST['login'])) {
 
         .kategori:hover {
             transform: skewY(3deg);
+        }
+
+        .scrolling-wrapper {
+            overflow-x: auto;
         }
     </style>
 </head>
@@ -81,7 +119,7 @@ if (isset($_POST['login'])) {
     <div class="container">
         <div class="row">
             <?php foreach ($kategori as $key => $value) { ?>
-                <form action="" method="POST" class="card col-md-4 my-4 kategori" style="border:none;background-color:transparent">
+                <form action="" method="POST" class="card col-12 col-md-4 my-4 kategori" style="border:none;background-color:transparent">
                     <button name="pilihCat" value="<?= $value['kode_kategori'] ?>">
                         <img class="card-img-top my-2" src="asset/cat<?= $key ?>.jpg" alt="Card image cap" style="border-radius: 100%;width:100%;height:250px">
                         <div class="card-body text-center">
@@ -89,6 +127,28 @@ if (isset($_POST['login'])) {
                         </div>
                     </button>
                 </form>
+            <?php } ?>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="text-dark my-3 font-weight-bold" style="font-size: 2em;">Featured Products</div>
+    </div>
+    <div class="container mb-4">
+        <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
+            <?php foreach ($produk as $key => $value) { ?>
+                <div class='card col-12 col-md-3 m-4'>
+                    <img class='card-img-top' src="<?= $value['url_gambar'] ?>" alt='Card image cap'>
+                    <div class='card-body'>
+                        <h5 class='card-title'><?= strtoUpper($value['nama_produk']) ?></h5>
+                        <p class='card-text'><?= $value['desc_produk'] ?></p>
+                        <p class='card-text font-weight-bold'>Rp. <?= number_format($value['harga_produk'], 0, '.', '.') ?></p>
+                        <form method='post'>
+                            <button href='#' class='btn btn-dark' value='$kode' name='detail'>Detail</button>
+                            <button href='#' class='btn btn-success' value='$kode' name='add'>Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
             <?php } ?>
         </div>
     </div>
