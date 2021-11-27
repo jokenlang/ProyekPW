@@ -66,7 +66,7 @@ if (isset($_POST['checkout'])) {
             <thead>
                 <tr>
                     <th scope="col">Merk</th>
-                    <th scope="col" class="d-none d-md-block">Desc</th>
+                    <th scope="col">Desc</th>
                     <th scope="col-5">Qty</th>
                     <th scope="col">Subtotal</th>
                     <th scope="col"></th>
@@ -81,12 +81,12 @@ if (isset($_POST['checkout'])) {
                                 <img src="<?= $value['url_gambar'] ?>" alt="" style="width: 50px;height: 50px;">
                                 <?= strtoUpper($value['nama_produk']) ?>
                             </td>
-                            <td class="d-none d-md-block"><?= $value['desc_produk'] ?></td>
+                            <td><?= $value['desc_produk'] ?></td>
                             <td>
                                 <form action="" method="POST" class="row">
-                                    <button name="kurangiQty" value="<?= $key ?>" class="btn btn-dark col-4">-</button>
+                                    <button name="kurangiQty" value="<?= $key ?>" class="btn btn-dark col-3 text-center">-</button>
                                     <button class="btn col-3 p-1"><?= $value['qty'] ?></button>
-                                    <button name="tambahQty" value="<?= $key ?>" class="btn btn-dark col-4">+</button>
+                                    <button name="tambahQty" value="<?= $key ?>" class="btn btn-dark col-3">+</button>
                                 </form>
                             </td>
                             <td>Rp. <?= number_format($value['subtotal'], 0, '.', '.') ?></td>
@@ -101,10 +101,11 @@ if (isset($_POST['checkout'])) {
                 <?php } ?>
                 <tr>
                     <td colspan="3" class="font-weight-bold text-danger" style="text-align:right">TOTAL</td>
-                    <td class="font-weight-bold h5">Rp. <?= number_format($total, 0, ',', '.') ?></td>
+                    <td colspan="2" class="font-weight-bold h5 text-left">Rp. <?= number_format($total, 0, ',', '.') ?></td>
                 </tr>
             </tbody>
         </table>
+        <!-- <div class="text text-right">Total : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $total ?></div> -->
 
         <div class="container">
             <form action="" method="POST">

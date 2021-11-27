@@ -87,7 +87,7 @@ $customer_details = array(
 );
 
 // Optional, remove this to display all available payment methods
-$enable_payments = array('bca_va', 'cimb_clicks', 'mandiri_clickpay', 'echannel');
+$enable_payments = array('bca_va', 'mandiri_clickpay', 'echannel');
 
 // Fill transaction details
 $cart = $_SESSION['cart'];
@@ -129,7 +129,7 @@ try {
     echo $e->getMessage();
 }
 
-echo "snapToken = " . $snap_token;
+// echo "snapToken = " . $snap_token;
 
 function printExampleWarningMessage()
 {
@@ -149,12 +149,88 @@ function printExampleWarningMessage()
 <!DOCTYPE html>
 <html>
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+
 <body>
-    <h1>Do you really want to checkout?</h1>
-    <button id="pay-button">Pay Now</button>
-    <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre>
+    <?php include('headerSnap.php'); ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <div class="text-dark my-3 font-weight-bold" style="font-size: 2em;">Confirmation</div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Merk</th>
+                            <th scope="col" class="d-none d-md-block">Desc</th>
+                            <th scope="col-5">Qty</th>
+                            <th scope="col">Subtotal</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $total = 0;
+                        $total_item = 0;
+                        ?>
+                        <?php if ($cart != null) { ?>
+                            <?php foreach ($cart as $key => $value) { ?>
+                                <tr>
+                                    <td>
+                                        <img src="<?= $value['url_gambar'] ?>" alt="" style="width: 50px;height: 50px;">
+                                        <?= strtoUpper($value['nama_produk']) ?>
+                                    </td>
+                                    <td class="d-none d-md-block"><?= $value['desc_produk'] ?></td>
+                                    <td><?= $value['qty'] ?></td>
+                                    <td>Rp. <?= number_format($value['subtotal'], 0, '.', '.') ?></td>
+                                    <?php $total += $value['subtotal']; ?>
+                                    <?php $total_item += $value['qty']; ?>
+                                </tr>
+                            <?php } ?>
+                        <?php } ?>
+                        <tr>
+                            <td colspan="3" class="font-weight-bold text-danger" style="text-align:right">TOTAL</td>
+                            <td class="font-weight-bold h5">Rp. <?= number_format($total, 0, ',', '.') ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="card my-4" style="background-color: lightgray;">
+                    <div class="card-body">
+                        <h2 class="card-title font-weight-bold my-2">Order Summary</h2>
+                        <hr>
+                        <div class="row my-4">
+                            <div class="col-6 card-text text-left">Total Items : </div>
+                            <div class="col-6 card-text text-right"><?= $total_item ?> Items</div>
+                        </div>
+                        <div class="row my-4">
+                            <div class="col-6 card-text text-left">Subtotal : </div>
+                            <div class="col-6 card-text text-right">Rp. <?= number_format($total, 0, '.', '.') ?></div>
+                        </div>
+                        <a href="./../cart.php" class="btn btn-danger float-right m-2">Cancel</a>
+                        <button class="btn btn-info float-right m-2" id="pay-button">Pay Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 
+
+
+
+    <!-- <h1>Do you really want to checkout?</h1> -->
+
+    <!-- <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre> -->
+
+    <?php include('../footer.php') ?>
     <script src="./../jquery-3.4.1.min.js"></script>
     <!-- TODO: Remove ".sandbox" from script src URL for production environment. Also input your client key in "data-client-key" -->
     <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="<?php echo Config::$clientKey; ?>"></script>
@@ -180,8 +256,6 @@ function printExampleWarningMessage()
                         },
                         success: function(response) {
                             $(document.body).html("");
-                            $(document.body).html(response);
-
                         }
                     });
                 },

@@ -18,11 +18,13 @@ if ($action == "kirimOrder") {
     $stmt->bind_param("ssssssii", $va_number, $transaction_time, $transaction_status, $transaction_id, $status_code, $order_id, $gross_amount, $kode_user);
     $result = $stmt->execute();
     $cart = $_SESSION['cart'];
+    print_r($cart);
     foreach ($cart as $key => $value) {
         $kode_produk = $value['kode_produk'];
         $qty = $value['qty'];
-        $stmt = $conn->prepare("INSERT INTO `dtrans` (`order_id`, `kode_produk`,`qty`,`harga`) VALUES (?, ?,?)");
+        $stmt = $conn->prepare("INSERT INTO `dtrans` (`order_id`, `kode_produk`,`qty`) VALUES (?, ?, ?)");
         $stmt->bind_param("ssi", $order_id, $kode_produk, $qty);
-        $result = $stmt->execute();
+        $stmt->execute();
     }
+    unset($_SESSION['cart']);
 }
