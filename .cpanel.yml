@@ -24,6 +24,8 @@ deployment:
     - /bin/cp jquery-3.4.1.min.js $DEPLOYPATH
     - /bin/cp style.css $DEPLOYPATH
     - /bin/cp login.css $DEPLOYPATH
+    - /bin/cp typage.css $DEPLOYPATH
+    - /bin/cp typage.css $DEPLOYPATH
     - /bin/cp -R asset $DEPLOYPATH
     - /bin/cp -R Midtrans $DEPLOYPATH
     - /bin/cp -R snap $DEPLOYPATH
