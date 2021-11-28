@@ -31,7 +31,7 @@ if(isset($_POST['back'])){
     <?php include('header.php'); ?>
     <div class="back">
         <!-- <button class="btn btn-primary" value="login" name="login">Login Now</button> -->
-        <button class="btn btn-secondary" value="back" name="back" ><< BACK</button>
+        <button class="btn btn-primary" value="back" name="back" ><< BACK</button>
     </div>
     <div class="container">
         <div class="text-dark my-3 font-weight-bold" style="font-size: 2em;">History Transaction</div>
