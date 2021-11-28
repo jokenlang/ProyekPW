@@ -11,11 +11,11 @@ if (($handle = fopen($_FILES['bulkFile']['tmp_name'], "r")) !== FALSE) {
     $stmt = $conn->prepare("INSERT INTO `produk` (`nama_produk`, `desc_produk`, `harga_produk`, `stok_produk`, `kode_jenis`,`url_gambar`) VALUES (?,?,?,?,?,?)");
     $stmt->bind_param("ssiiis", $data[0], $data[1], $data[2], $data[3], $data[4], $data[5]);
     $result = $stmt->execute();
-    if ($result) {
-      alert('Product added');
-    } else {
-      alert('Product failed');
-    }
+    // if ($result) {
+    //   // alert('Product added');
+    // } else {
+    //   alert('Product failed');
+    // }
   }
   fclose($handle);
 }
