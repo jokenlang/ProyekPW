@@ -11,7 +11,7 @@ if (isset($_POST['login'])) {
 }
 
 if(isset($_POST['back'])){
-    header('Location: HistoryUser.php')
+    header('Location: historyUser.php')
 }
 ?>
 

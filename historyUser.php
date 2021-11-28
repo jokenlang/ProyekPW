@@ -9,7 +9,7 @@ if (isset($_POST['detailOrder'])) {
 }
 
 if(isset($_POST['back'])){
-    header('Location: HistoryUser.php')
+    header('Location: historyUser.php')
 }
 ?>
 
