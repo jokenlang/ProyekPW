@@ -9,10 +9,6 @@ if (isset($_POST['login'])) {
     header('Location:login.php');
     // http_redirect('login.php');
 }
-
-if(isset($_POST['back'])){
-    header('Location: historyUser.php')
-}
 ?>
 
 <!DOCTYPE html>
@@ -29,11 +25,12 @@ if(isset($_POST['back'])){
 
 <body>
     <?php include('header.php'); ?>
-    <div class="back">
-        <!-- <button class="btn btn-primary" value="login" name="login">Login Now</button> -->
-        <button class="btn btn-primary" value="back" name="back" ><< BACK</button>
-    </div>
+
+    
     <div class="container">
+        <a href="historyUser.php">
+            <button type="button" value="back" class="btn btn-light"><< BACK</button>
+        </a>
         <div class="text-dark my-3 font-weight-bold" style="font-size: 2em;">History Transaction</div>
     </div>
 
