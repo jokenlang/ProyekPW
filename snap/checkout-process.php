@@ -11,6 +11,8 @@ require_once dirname(__FILE__) . '/../Midtrans.php';
 // can find in Merchant Portal -> Settings -> Access keys
 Config::$serverKey = 'SB-Mid-server-xC91-kxK1hlB1UzFglD4McG4';
 Config::$clientKey = 'SB-Mid-client-UCQsXwfoA3PIjnr3';
+// Config::$serverKey = 'SB-Mid-server-gHZXLWEWjUFrJg7UcvqEbqjd';
+// Config::$clientKey = 'SB-Mid-client-mbAWbVaBJbhY5Yz1';
 
 // non-relevant function only used for demo/example purpose
 printExampleWarningMessage();

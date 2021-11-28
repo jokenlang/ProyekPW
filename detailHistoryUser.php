@@ -3,6 +3,12 @@ require_once('connection.php');
 $idxUser = $_SESSION['idxUser'];
 $order_id = $_SESSION['order_id'];
 $dtrans = $conn->query("SELECT * From dtrans where order_id = '$order_id'")->fetch_all(MYSQLI_ASSOC);
+
+if (isset($_POST['login'])) {
+    // echo("test");
+    header('Location:login.php');
+    // http_redirect('login.php');
+}
 ?>
 
 <!DOCTYPE html>

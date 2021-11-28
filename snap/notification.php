@@ -1,10 +1,11 @@
 <?php
 
 namespace Midtrans;
-
+require_once('../connection.php');
 require_once dirname(__FILE__) . '/../Midtrans.php';
 Config::$isProduction = false;
 Config::$serverKey = 'SB-Mid-server-xC91-kxK1hlB1UzFglD4McG4';
+// Config::$serverKey = 'SB-Mid-server-gHZXLWEWjUFrJg7UcvqEbqjd';
 $notif = new \Midtrans\Notification();
 
 $transaction = $notif->transaction_status;

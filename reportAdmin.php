@@ -13,7 +13,9 @@ if (isset($_POST['detailOrder'])) {
     $_SESSION['order_id'] = $_POST['detailOrder'];
     header('Location:detailReportAdmin.php');
 }
-
+if (isset($_POST['logout'])) {
+    header('Location:index.php');
+}
 ?>
 
 <!DOCTYPE html>
