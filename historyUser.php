@@ -7,6 +7,10 @@ if (isset($_POST['detailOrder'])) {
     $_SESSION['order_id'] = $_POST['detailOrder'];
     header('Location:detailHistoryUser.php');
 }
+
+if(isset($_POST['back'])){
+    header('Location: HistoryUser.php')
+}
 ?>
 
 <!DOCTYPE html>

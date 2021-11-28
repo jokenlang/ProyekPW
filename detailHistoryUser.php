@@ -25,6 +25,9 @@ if (isset($_POST['login'])) {
 
 <body>
     <?php include('header.php'); ?>
+    <div class="back">
+        <button type="button" value="back" class="btn btn-light"><< BACK</button>
+    </div>
     <div class="container">
         <div class="text-dark my-3 font-weight-bold" style="font-size: 2em;">History Transaction</div>
     </div>
