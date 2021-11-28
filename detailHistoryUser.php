@@ -29,7 +29,7 @@ if (isset($_POST['login'])) {
     
     <div class="container">
         <a href="historyUser.php">
-            <button type="button" value="back" class="btn btn-light"><< BACK</button>
+            <button type="button" value="back" class="btn btn-light" style="margin-top:25px; background-color:transparent"><< BACK</button>
         </a>
         <div class="text-dark my-3 font-weight-bold" style="font-size: 2em;">History Transaction</div>
     </div>
