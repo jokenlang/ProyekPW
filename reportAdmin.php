@@ -192,7 +192,7 @@ if (isset($_POST['logout'])) {
                                 $user = $conn->query("SELECT * From user where kode_user = '$kode_user'")->fetch_assoc();
                                 $total_income += $value['gross_amount'];
                                 ?>
-                                <p class="card-text">User : <?= strtoUpper($user['nama_user']) ?></p>
+                                <p class="card-text">Customer : <?= strtoUpper($user['nama_user']) ?></p>
                                 <p class="card-text">Subtotal : <b> Rp. <?= number_format($value['gross_amount'], 0, '.', '.'); ?></b></p>
                                 <form action="" method="post">
                                     <button name="detailOrder" value="<?= $value['order_id'] ?>" class="btn float-right text-dark" style="color: white;">Detail >> </button>

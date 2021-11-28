@@ -9,7 +9,7 @@ if (isset($_POST['detailOrder'])) {
 }
 
 if(isset($_POST['login'])){
-    header('Location: login.php')
+    header('Location: login.php');
 }
 ?>
 
