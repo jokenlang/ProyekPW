@@ -4,7 +4,7 @@ require_once('connection.php');
 $kategori = $conn->query("SELECT * From kategori")->fetch_all(MYSQLI_ASSOC);
 
 //pagination
-$jumlahDataperHal = 6;
+$jumlahDataperHal = 12;
 $res = mysqli_query($conn, "select * from produk");
 $jumlahData = mysqli_num_rows($res);
 $jumlahHal = ceil($jumlahData / $jumlahDataperHal);
@@ -80,85 +80,93 @@ if (isset($_POST['logout'])) {
 
 <body>
     <?php include('headerAdmin.php') ?>
-    <h1>Welcome, Admin</h1>
+    <div class="container">
+        <h1 class="my-4">Welcome, Admin</h1>
+        <hr>
+        <h2 class="my-4">Add Product</h2>
+        <form action="" method="POST" class="my-4">
+            Name : <input type="text" name="nama" id="nama" class="form-control">
+            <br>
+            Kategori :
+            <select name="kategori" id="kategori" class="form-control">
+                <option value="">Select Kategori</option>
+                <?php
+                $sql = "select * from kategori";
+                $hasil = mysqli_query($conn, $sql);
+                while ($data = mysqli_fetch_array($hasil)) {
+                ?>
+                    <option value="<?php echo $data['kode_kategori']; ?>"><?php echo $data['nama_kategori']; ?></option>
+                <?php } ?>
+            </select>
+            <br>
+            Jenis :
+            <select name="jenis" id="jenis" class="form-control"></select>
+            <br>
+            Harga :
+            <input type="text" name="harga" id="" class="form-control">
+            <br>
+            Desc:
+            <textarea name="desc" id="" cols="30" rows="10" class="form-control"></textarea>
+            <br>
+            Stok :
+            <input type="text" name="stok" id="" class="form-control">
+            <br>
+            Url Gambar :
+            <input type="text" name="url" id="" class="form-control">
+            <br>
+            <button name="addProduct" value="tambah" class="btn btn-info">Add Product</button>
+        </form>
 
-    <h1>Add Product</h1>
-    <form action="" method="POST">
-        Name : <input type="text" name="nama" id="nama">
-        <br>
-        Kategori :
-        <select name="kategori" id="kategori">
-            <option value="">Select Kategori</option>
-            <?php
-            $sql = "select * from kategori";
-            $hasil = mysqli_query($conn, $sql);
-            while ($data = mysqli_fetch_array($hasil)) {
-            ?>
-                <option value="<?php echo $data['kode_kategori']; ?>"><?php echo $data['nama_kategori']; ?></option>
-            <?php } ?>
-        </select>
-        <br>
-        Jenis :
-        <select name="jenis" id="jenis"></select>
-        <br>
-        Harga :
-        <input type="text" name="harga" id="">
-        <br>
-        Desc:
-        <textarea name="desc" id="" cols="30" rows="10"></textarea>
-        <br>
-        Stok :
-        <input type="text" name="stok" id="">
-        <br>
-        Url Gambar :
-        <input type="text" name="url" id="">
-        <br>
-        <button name="addProduct" value="tambah">Add</button>
-    </form>
+        <hr>
+        <form action="bulkAdding.php" method="post" enctype="multipart/form-data" class="my-4">
+            <h2>Add by Bulk</h2>
+            <input type="file" name="bulkFile" id="" class="form-control my-4">
+            <button name="bulkAdd" class="btn btn-info my-4">Bulk Add</button>
+        </form>
+        <hr>
+        <h1>List Product</h1>
 
-    <br>
-    <h1>List Product</h1>
-    <br>
-    <table class="table">
-        <tr>
-            <td>Nama</td>
-            <td>Jenis</td>
-            <td>Stok</td>
-            <td>Desc</td>
-            <td>Harga</td>
-            <td>Gambar</td>
-        </tr>
-        <?php foreach ($produk as $key => $val) { ?>
+        <br>
+        <table class="table">
             <tr>
-                <td><?= strtoupper($val['nama_produk']) ?></td>
-                <td>
-                    <?php
-                    $kode_jenis = $val['kode_jenis'];
-                    $stmt = $conn->query("SELECT * FROM jenis WHERE kode_jenis='$kode_jenis'");
-                    $jenis = $stmt->fetch_assoc();
-                    ?>
-                    <?= $jenis['nama_jenis'] ?>
-                </td>
-                <td><?= $val['stok_produk'] ?></td>
-                <td><?= $val['desc_produk'] ?></td>
-                <td>Rp. <?= number_format($val['harga_produk'], 00, ',', '.') ?></td>
-                <td><img src="<?= $val['url_gambar'] ?>" alt=""></td>
+                <td>Nama</td>
+                <td>Jenis</td>
+                <td>Stok</td>
+                <td>Desc</td>
+                <td>Harga</td>
+                <td>Gambar</td>
             </tr>
-        <?php } ?>
-    </table>
-
-
-
-    <!-- Navigasi -->
-    <?php for ($i = 1; $i <= $jumlahHal; $i++) { ?>
-        <span>
-            <?php if ($i == $halAktif) { ?>
-                <a href="?hal=<?= $i ?>" style="color: red;"><?= $i ?></a>
-            <?php } else { ?>
-                <a href="?hal=<?= $i ?>"><?= $i ?></a>
+            <?php foreach ($produk as $key => $val) { ?>
+                <tr>
+                    <td><?= strtoupper($val['nama_produk']) ?></td>
+                    <td>
+                        <?php
+                        $kode_jenis = $val['kode_jenis'];
+                        $stmt = $conn->query("SELECT * FROM jenis WHERE kode_jenis='$kode_jenis'");
+                        $jenis = $stmt->fetch_assoc();
+                        ?>
+                        <?= $jenis['nama_jenis'] ?>
+                    </td>
+                    <td><?= $val['stok_produk'] ?></td>
+                    <td><?= $val['desc_produk'] ?></td>
+                    <td>Rp. <?= number_format($val['harga_produk'], 00, ',', '.') ?></td>
+                    <td><img src="<?= $val['url_gambar'] ?>" alt=""></td>
+                </tr>
             <?php } ?>
-        </span>
-    <?php } ?>
+        </table>
+
+        <!-- Navigasi -->
+        <?php for ($i = 1; $i <= $jumlahHal; $i++) { ?>
+            <span>
+                <?php if ($i == $halAktif) { ?>
+                    <a href="?hal=<?= $i ?>" class="text-danger"><u><?= $i ?></u></a>
+                <?php } else { ?>
+                    <a href="?hal=<?= $i ?>"><?= $i ?></a>
+                <?php } ?>
+            </span>
+        <?php } ?>
+    </div>
+
 
     <script>
         $("#kategori").change(function() {
@@ -180,10 +188,7 @@ if (isset($_POST['logout'])) {
         <!-- <button name="logout">logout</button> -->
     </form>
     <br><br>
-    <form action="bulkAdding.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="bulkFile" id="">
-        <button name="bulkAdd">Bulk Add</button>
-    </form>
+
 </body>
 
 </html>
