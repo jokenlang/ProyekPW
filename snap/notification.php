@@ -1,6 +1,7 @@
 <?php
 
 namespace Midtrans;
+
 require_once('../connection.php');
 require_once dirname(__FILE__) . '/../Midtrans.php';
 Config::$isProduction = false;
@@ -29,8 +30,11 @@ if ($transaction == 'capture') {
 } else if ($transaction == 'settlement') {
   // TODO set payment status in merchant's database to 'Settlement'
   //echo "Transaction order_id: " . $order_id ." successfully transfered using " . $type;
-  $stmt = $conn->prepare("UPDATE `htrans` SET `transaction_status` = ?,`settlement_time` = ? WHERE `htrans`.`order_id` = ?");
-  $stmt->bind_param("sss", $transaction, $settlement_time, $order_id);
+  // $stmt = $conn->prepare("UPDATE `htrans` SET `transaction_status` = ?,`settlement_time` = ? WHERE `htrans`.`order_id` = ?");
+  // $stmt->bind_param("sss", $transaction, $settlement_time, $order_id);
+  // $result = $stmt->execute();
+  $stmt = $conn->prepare("UPDATE `htrans` SET `transaction_status` = ? WHERE `htrans`.`order_id` = ?");
+  $stmt->bind_param("ss", $transaction, $order_id);
   $result = $stmt->execute();
 } else if ($transaction == 'pending') {
   // TODO set payment status in merchant's database to 'Pending'
