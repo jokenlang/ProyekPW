@@ -1,5 +1,19 @@
 <?php
 require_once('connection.php');
+
+if (isset($_POST['change'])) {
+    $bulan = $_POST['bulan'];
+} else {
+    $bulan = 1;
+}
+
+$htrans = $conn->query("SELECT * From htrans where month(transaction_time) = '$bulan' order by transaction_time desc")->fetch_all(MYSQLI_ASSOC);
+
+if (isset($_POST['detailOrder'])) {
+    $_SESSION['order_id'] = $_POST['detailOrder'];
+    header('Location:detailReportAdmin.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +25,7 @@ require_once('connection.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
@@ -129,10 +144,61 @@ require_once('connection.php');
                 <?php } ?>
             </tbody>
         </table>
+
+        <hr>
     </div>
-
-    
-
+    <div class="container my-4">
+        <h2>Report by Month</h2>
+        <form action="" method="POST">
+            <div class="row">
+                <select name="bulan" id="bulan" class="col-8 m-3 form-control">
+                    <?php for ($i = 1; $i <= 12; $i++) {
+                        if ($i == $bulan) { ?>
+                            <option value="<?= $i ?>" selected><?= date("F", strtotime('00-' . $i . '-01')); ?></option>
+                        <?php } else { ?>
+                            <option value="<?= $i ?>"><?= date("F", strtotime('00-' . $i . '-01')); ?></option>
+                        <?php } ?>
+                    <?php } ?>
+                </select>
+                <button value="c" name="change" class="btn btn-info m-3 col-3">Change</button>
+            </div>
+        </form>
+    </div>
+    <div class="container my-4">
+        <div id="dataBulan">
+            <?php if ($htrans != null) { ?>
+                <?php foreach ($htrans as $key => $value) { ?>
+                    <div class="card my-2" style="border-radius: 20px;">
+                        <div class="card-header bg-success text-light" style="border-radius: 20px;">
+                            Order ID : <?= $value['order_id'] ?>
+                        </div>
+                        <div class="card-body">
+                            <?php
+                            $order_id = $value['order_id'];
+                            $dtrans = $conn->query("SELECT * From dtrans where order_id = '$order_id'")->fetch_all(MYSQLI_ASSOC);
+                            $total = count($dtrans);
+                            ?>
+                            <h5 class="card-title">Total Items : <?= $total ?></h5>
+                            <p class="card-text">Time : <?= $value['transaction_time'] ?></p>
+                            <p class="card-text">Status : <?= strtoUpper($value['transaction_status']) ?></p>
+                            <?php
+                            $kode_user = $value['kode_user'];
+                            $user = $conn->query("SELECT * From user where kode_user = '$kode_user'")->fetch_assoc();
+                            ?>
+                            <p class="card-text">User : <?= strtoUpper($user['nama_user']) ?></p>
+                            <p class="card-text">Subtotal : <b> Rp. <?= $value['gross_amount'] ?></b></p>
+                            <form action="" method="post">
+                                <button name="detailOrder" value="<?= $value['order_id'] ?>" class="btn float-right text-dark" style="color: white;">Detail >> </button>
+                            </form>
+                        </div>
+                    </div>
+                <?php } ?>
+            <?php } else { ?>
+                <h3 class="text-secondary">No Transaction Found</h3>
+            <?php } ?>
+        </div>
+    </div>
+    <?php include('footer.php'); ?>
 </body>
 
 </html>

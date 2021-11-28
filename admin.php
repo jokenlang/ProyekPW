@@ -188,7 +188,7 @@ if (isset($_POST['logout'])) {
         <!-- <button name="logout">logout</button> -->
     </form>
     <br><br>
-
+    <?php include('footer.php'); ?>
 </body>
 
 </html>

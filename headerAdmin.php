@@ -1,17 +1,6 @@
 <?php
 require_once('connection.php');
 
-if (isset($_POST['logout'])) {
-    unset($_SESSION['idxUser']);
-    header('Location:index.php');
-}
-
-if (isset($_POST['login'])) {
-    // echo("test");
-    header('Location:login.php');
-    // http_redirect('login.php');
-}
-
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <div class="container">
