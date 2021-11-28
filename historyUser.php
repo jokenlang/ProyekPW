@@ -32,7 +32,7 @@ if (isset($_POST['detailOrder'])) {
                 <div class="card my-2" style="border-radius: 20px;">
                     <?php if (strtoUpper($value['transaction_status']) == "PENDING") { ?>
                         <div class="card-header bg-danger text-light" style="border-radius:18px;">
-                        <?php } else if (strtoUpper($value['transaction_status']) == "EXPIRY") { ?>
+                        <?php } else if (strtoUpper($value['transaction_status']) == "EXPIRE") { ?>
                             <div class="card-header bg-dark text-light">
                             <?php } else { ?>
                                 <div class="card-header bg-success text-light">

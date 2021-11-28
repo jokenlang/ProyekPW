@@ -59,12 +59,13 @@ if (isset($_POST['logout'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <title>Document</title>
     <script src="jquery-3.4.1.min.js"></script>
     <style>
-        table tr td {
+        /* table tr td {
             border: 1px solid black;
-        }
+        } */
 
         table tr td img {
             width: 100px;
@@ -78,6 +79,7 @@ if (isset($_POST['logout'])) {
 </head>
 
 <body>
+    <?php include('headerAdmin.php') ?>
     <h1>Welcome, Admin</h1>
 
     <h1>Add Product</h1>
@@ -117,7 +119,7 @@ if (isset($_POST['logout'])) {
     <br>
     <h1>List Product</h1>
     <br>
-    <table>
+    <table class="table">
         <tr>
             <td>Nama</td>
             <td>Jenis</td>
@@ -175,7 +177,7 @@ if (isset($_POST['logout'])) {
     </script>
     <br>
     <form action="" method="post">
-        <button name="logout">logout</button>
+        <!-- <button name="logout">logout</button> -->
     </form>
     <br><br>
     <form action="bulkAdding.php" method="post" enctype="multipart/form-data">
