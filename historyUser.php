@@ -8,9 +8,9 @@ if (isset($_POST['detailOrder'])) {
     header('Location:detailHistoryUser.php');
 }
 
-// if(isset($_POST['back'])){
-//     header('Location: historyUser.php')
-// }
+if(isset($_POST['login'])){
+    header('Location: login.php')
+}
 ?>
 
 <!DOCTYPE html>

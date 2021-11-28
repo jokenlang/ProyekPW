@@ -11,8 +11,9 @@ deployment:
     - /bin/cp bulkAdding.php $DEPLOYPATH
     - /bin/cp cart.php $DEPLOYPATH
     - /bin/cp connection.php $DEPLOYPATH
-    - /bin/cp detailProduct.php $DEPLOYPATH
     - /bin/cp detailHistoryUser.php $DEPLOYPATH
+    - /bin/cp detailProduct.php $DEPLOYPATH
+    - /bin/cp detailReportAdmin.php $DEPLOYPATH
     - /bin/cp fetch.php $DEPLOYPATH
     - /bin/cp fetchFromCat.php $DEPLOYPATH
     - /bin/cp footer.php $DEPLOYPATH
