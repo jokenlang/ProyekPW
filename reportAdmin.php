@@ -184,7 +184,7 @@ if (isset($_POST['detailOrder'])) {
                                 ?>
                                 <h5 class="card-title">Total Items : <?= $total ?></h5>
                                 <p class="card-text">Time : <?= $value['transaction_time'] ?></p>
-                                <p class="card-text">Status : <?= strtoUpper($value['transaction_status']) ?></p>
+                                <!-- <p class="card-text">Status : <?= strtoUpper($value['transaction_status']) ?></p> -->
                                 <?php
                                 $kode_user = $value['kode_user'];
                                 $user = $conn->query("SELECT * From user where kode_user = '$kode_user'")->fetch_assoc();
