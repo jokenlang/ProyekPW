@@ -165,37 +165,59 @@ if (isset($_POST['detailOrder'])) {
         </form>
     </div>
     <div class="container my-4">
-        <div id="dataBulan">
-            <?php if ($htrans != null) { ?>
-                <?php foreach ($htrans as $key => $value) { ?>
-                    <div class="card my-2" style="border-radius: 20px;">
-                        <div class="card-header bg-success text-light" style="border-radius: 20px;">
-                            Order ID : <?= $value['order_id'] ?>
+        <div class="row">
+            <div id="dataBulan" class="col-12 col-lg-8">
+                <?php $total_item = 0; ?>
+                <?php $total_income = 0; ?>
+                <?php if ($htrans != null) { ?>
+                    <?php foreach ($htrans as $key => $value) { ?>
+                        <div class="card my-2" style="border-radius: 20px;">
+                            <div class="card-header bg-success text-light" style="border-radius: 20px;">
+                                Order ID : <?= $value['order_id'] ?>
+                            </div>
+                            <div class="card-body">
+                                <?php
+                                $order_id = $value['order_id'];
+                                $dtrans = $conn->query("SELECT * From dtrans where order_id = '$order_id'")->fetch_all(MYSQLI_ASSOC);
+                                $total = count($dtrans);
+                                $total_item += $total;
+                                ?>
+                                <h5 class="card-title">Total Items : <?= $total ?></h5>
+                                <p class="card-text">Time : <?= $value['transaction_time'] ?></p>
+                                <p class="card-text">Status : <?= strtoUpper($value['transaction_status']) ?></p>
+                                <?php
+                                $kode_user = $value['kode_user'];
+                                $user = $conn->query("SELECT * From user where kode_user = '$kode_user'")->fetch_assoc();
+                                $total_income += $value['gross_amount'];
+                                ?>
+                                <p class="card-text">User : <?= strtoUpper($user['nama_user']) ?></p>
+                                <p class="card-text">Subtotal : <b> Rp. <?= number_format($value['gross_amount'], 0, '.', '.'); ?></b></p>
+                                <form action="" method="post">
+                                    <button name="detailOrder" value="<?= $value['order_id'] ?>" class="btn float-right text-dark" style="color: white;">Detail >> </button>
+                                </form>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <?php
-                            $order_id = $value['order_id'];
-                            $dtrans = $conn->query("SELECT * From dtrans where order_id = '$order_id'")->fetch_all(MYSQLI_ASSOC);
-                            $total = count($dtrans);
-                            ?>
-                            <h5 class="card-title">Total Items : <?= $total ?></h5>
-                            <p class="card-text">Time : <?= $value['transaction_time'] ?></p>
-                            <p class="card-text">Status : <?= strtoUpper($value['transaction_status']) ?></p>
-                            <?php
-                            $kode_user = $value['kode_user'];
-                            $user = $conn->query("SELECT * From user where kode_user = '$kode_user'")->fetch_assoc();
-                            ?>
-                            <p class="card-text">User : <?= strtoUpper($user['nama_user']) ?></p>
-                            <p class="card-text">Subtotal : <b> Rp. <?= $value['gross_amount'] ?></b></p>
-                            <form action="" method="post">
-                                <button name="detailOrder" value="<?= $value['order_id'] ?>" class="btn float-right text-dark" style="color: white;">Detail >> </button>
-                            </form>
+                    <?php } ?>
+                <?php } else { ?>
+                    <h3 class="text-secondary">No Transaction Found</h3>
+                <?php } ?>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="card my-4" style="background-color: lightgray;">
+                    <div class="card-body">
+                        <h2 class="card-title font-weight-bold my-2">Summary</h2>
+                        <hr>
+                        <div class="row my-4">
+                            <div class="col-6 card-text text-left">Items sold : </div>
+                            <div class="col-6 card-text text-right"><?= $total_item ?> Items</div>
+                        </div>
+                        <div class="row my-4">
+                            <div class="col-6 card-text text-left">Total income : </div>
+                            <div class="col-6 card-text text-right">Rp. <?= number_format($total_income, 0, '.', '.') ?></div>
                         </div>
                     </div>
-                <?php } ?>
-            <?php } else { ?>
-                <h3 class="text-secondary">No Transaction Found</h3>
-            <?php } ?>
+                </div>
+            </div>
         </div>
     </div>
     <?php include('footer.php'); ?>

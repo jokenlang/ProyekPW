@@ -11,6 +11,7 @@ $transaction = $notif->transaction_status;
 $type = $notif->payment_type;
 $order_id = $notif->order_id;
 $fraud = $notif->fraud_status;
+$settlement_time = $notif->settlement_time;
 
 if ($transaction == 'capture') {
   // For credit card transaction, we need to check whether transaction is challenge by FDS or not
@@ -27,8 +28,8 @@ if ($transaction == 'capture') {
 } else if ($transaction == 'settlement') {
   // TODO set payment status in merchant's database to 'Settlement'
   //echo "Transaction order_id: " . $order_id ." successfully transfered using " . $type;
-  $stmt = $conn->prepare("UPDATE `htrans` SET `transaction_status` = ? WHERE `htrans`.`order_id` = ?");
-  $stmt->bind_param("ss", $transaction, $order_id);
+  $stmt = $conn->prepare("UPDATE `htrans` SET `transaction_status` = ?,`settlement_time` = ? WHERE `htrans`.`order_id` = ?");
+  $stmt->bind_param("sss", $transaction, $settlement_time, $order_id);
   $result = $stmt->execute();
 } else if ($transaction == 'pending') {
   // TODO set payment status in merchant's database to 'Pending'

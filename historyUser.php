@@ -34,9 +34,9 @@ if (isset($_POST['detailOrder'])) {
                         <?php if (strtoUpper($value['transaction_status']) == "PENDING") { ?>
                             <div class="card-header bg-danger text-light" style="border-radius:18px;">
                             <?php } else if (strtoUpper($value['transaction_status']) == "EXPIRE") { ?>
-                                <div class="card-header bg-dark text-light">
+                                <div class="card-header bg-dark text-light" style="border-radius:18px;">
                                 <?php } else { ?>
-                                    <div class="card-header bg-success text-light">
+                                    <div class="card-header bg-success text-light" style="border-radius:18px;">
                                     <?php } ?>
                                     Order ID : <?= $value['order_id'] ?>
                                     </div>
@@ -49,14 +49,13 @@ if (isset($_POST['detailOrder'])) {
                                         <h5 class="card-title">Total Items : <?= $total ?></h5>
                                         <p class="card-text">Time : <?= $value['transaction_time'] ?></p>
                                         <p class="card-text">Status : <?= strtoUpper($value['transaction_status']) ?></p>
-                                        <p class="card-text">Subtotal : <b> Rp. <?= $value['gross_amount'] ?></b></p>
+                                        <p class="card-text">Subtotal : <b> Rp. <?= number_format($value['gross_amount'], 0, '.', '.') ?></b></p>
                                         <button name="detailOrder" value="<?= $value['order_id'] ?>" class="btn float-right text-dark" style="color: white;">Detail >> </button>
                                     </div>
                                 </div>
+                            <?php } ?>
+                        <?php } ?>
                             </div>
-                    </div>
-                <?php } ?>
-            <?php } ?>
     </form>
 
     <?php include('footer.php'); ?>
