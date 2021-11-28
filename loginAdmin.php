@@ -57,7 +57,7 @@ if (isset($_POST['home'])) {
                         <div class="button">
                             <!-- <input type="submit" value="Login" name="login" class="login"> -->
                             <button value="Login" name="login" class="login"><span>Login</span></button>
-                            <button name="register" value="register" class="register"><span>Register </span></button>
+                            <!-- <button name="register" value="register" class="register"><span>Register </span></button> -->
                             <button name="home" value="home" class="home"><span>Home </span></button>
                         </div>
                     </form>
