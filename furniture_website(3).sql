@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2021 at 03:38 PM
+-- Generation Time: Nov 27, 2021 at 03:28 PM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,10 +18,68 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `furniture_website`
+-- Database: `tstingp_furniture_website`
 --
 CREATE DATABASE IF NOT EXISTS `tstingp_furniture_website` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `tstingp_furniture_website`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dtrans`
+--
+
+DROP TABLE IF EXISTS `dtrans`;
+CREATE TABLE `dtrans` (
+  `kode_dtrans` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `kode_produk` int(11) NOT NULL,
+  `qty` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `dtrans`
+--
+
+INSERT INTO `dtrans` (`kode_dtrans`, `order_id`, `kode_produk`, `qty`) VALUES
+(16, 1427316567, 5, 1),
+(17, 1427316567, 1, 1),
+(18, 1792724185, 1, 1),
+(19, 1792599651, 3, 1),
+(20, 632991423, 40, 1),
+(21, 1995305965, 16, 1),
+(22, 431740817, 14, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `htrans`
+--
+
+DROP TABLE IF EXISTS `htrans`;
+CREATE TABLE `htrans` (
+  `va_number` varchar(50) DEFAULT NULL,
+  `transaction_time` datetime NOT NULL,
+  `transaction_status` varchar(20) NOT NULL,
+  `transaction_id` varchar(100) NOT NULL,
+  `status_code` varchar(4) NOT NULL,
+  `settlement_time` datetime DEFAULT NULL,
+  `order_id` varchar(100) NOT NULL,
+  `gross_amount` int(11) NOT NULL,
+  `kode_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `htrans`
+--
+
+INSERT INTO `htrans` (`va_number`, `transaction_time`, `transaction_status`, `transaction_id`, `status_code`, `settlement_time`, `order_id`, `gross_amount`, `kode_user`) VALUES
+('[{\"bank\":\"bca\",\"va_number\":\"31832381975\"}]', '2021-11-27 18:41:22', 'pending', 'c44ec2bb-ed33-45e2-8558-ceb4a2cf96ff', '201', NULL, '1427316567', 2398000, 2),
+('[{\"bank\":\"bca\",\"va_number\":\"31832936474\"}]', '2021-11-27 18:47:10', 'pending', '12172274-d809-46b4-96cc-146fd39292fb', '201', NULL, '1792599651', 299000, 2),
+('[{\"bank\":\"bca\",\"va_number\":\"31832539413\"}]', '2021-11-27 18:42:06', 'pending', '324985ca-428e-454b-9768-49f6c30005e6', '201', NULL, '1792724185', 2099000, 2),
+('[{\"bank\":\"bca\",\"va_number\":\"31832780287\"}]', '2021-11-27 21:24:10', 'pending', 'ff4cf8c3-ee0a-40b4-b712-20f5fafc46a6', '201', NULL, '1995305965', 275000, 2),
+('[{\"bank\":\"bca\",\"va_number\":\"31832533422\"}]', '2021-11-27 21:25:51', 'pending', 'e536dedb-3192-4298-8354-b905ecbee5ad', '201', NULL, '431740817', 175000, 2),
+('[{\"bank\":\"bca\",\"va_number\":\"31832626716\"}]', '2021-11-27 18:48:24', 'pending', '968d4ea1-a678-4af2-a39c-dec768c2561d', '201', NULL, '632991423', 199000, 2);
 
 -- --------------------------------------------------------
 
@@ -96,7 +154,7 @@ CREATE TABLE `produk` (
 
 INSERT INTO `produk` (`kode_produk`, `nama_produk`, `desc_produk`, `harga_produk`, `stok_produk`, `kode_jenis`, `url_gambar`) VALUES
 (1, 'Brimnes', 'Wardrobe with 2 doors, white, 78x190 cm', 2099000, 5, 2, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/406/0140624_PE300605_S4.jpg'),
-(3, 'baggebo', 'Rak buku, putih, 50x30x80 cm', 299000, 8, 3, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/189/1018918_PE831218_S4.jpg'),
+(3, 'baggebo', 'Bookcase, white, 50x30x80 cm', 299000, 8, 3, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/189/1018918_PE831218_S4.jpg'),
 (5, 'Vuku', 'Wardrobe, white, 74x51x149 cm', 299000, 6, 2, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/980/0498088_PE629449_S4.jpg'),
 (6, 'GRIMSBU', 'Bed frame, grey/luroy, 90x200 cm', 1099000, 3, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/492/0749251_PE747239_S5.jpg'),
 (7, 'SLATTUM', 'Upholstered bed frame, knisa light grey, 120x200 cm', 1799000, 5, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/471/0947171_PE798382_S4.jpg'),
@@ -196,9 +254,7 @@ INSERT INTO `produk` (`kode_produk`, `nama_produk`, `desc_produk`, `harga_produk
 (103, 'VADSO', 'Spring mattress, extra firm/light blue, 90x200 cm', 799000, 3, 1, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/987/0898718_PE782604_S4.jpg'),
 (104, 'PAX', 'Wardrobe frame, white, 100x58x236 cm\r\n', 3299000, 11, 2, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/210/0721077_PE733043_S4.jpg'),
 (105, ' PAX / VIKEDAL', 'Wardrobe combination, white/mirror glass, 150x60x201 cm', 7499000, 3, 2, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/353/0935354_PE792735_S4.jpg'),
-(106, 'FARVIK', 'Pair of sliding doors, white glass, 150x236 cm', 5199000, 8, 2, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/404/0640492_PE699863_S4.jpg'),
-(107, 'AHIHIHI', 'AHIHIHI with a lot of fun', 100000, 10, 9, 'https://www.pngitem.com/pimgs/m/552-5522068_thumb-image-bernard-bear-png-transparent-png.png'),
-(108, 'AWUWUWU', 'awuwuwu with a lot of noise', 10000, 4, 9, 'https://www.pngitem.com/pimgs/m/552-5522068_thumb-image-bernard-bear-png-transparent-png.png');
+(106, 'FARVIK', 'Pair of sliding doors, white glass, 150x236 cm', 5199000, 8, 2, 'https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/images/404/0640492_PE699863_S4.jpg');
 
 -- --------------------------------------------------------
 
@@ -231,6 +287,18 @@ INSERT INTO `user` (`kode_user`, `username_user`, `password_user`, `nama_user`, 
 --
 
 --
+-- Indexes for table `dtrans`
+--
+ALTER TABLE `dtrans`
+  ADD PRIMARY KEY (`kode_dtrans`);
+
+--
+-- Indexes for table `htrans`
+--
+ALTER TABLE `htrans`
+  ADD PRIMARY KEY (`order_id`) USING BTREE;
+
+--
 -- Indexes for table `jenis`
 --
 ALTER TABLE `jenis`
@@ -251,14 +319,14 @@ ALTER TABLE `produk`
   ADD KEY `fk_kode_jenis` (`kode_jenis`);
 
 --
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`kode_user`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `dtrans`
+--
+ALTER TABLE `dtrans`
+  MODIFY `kode_dtrans` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `jenis`
@@ -277,12 +345,6 @@ ALTER TABLE `kategori`
 --
 ALTER TABLE `produk`
   MODIFY `kode_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `kode_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
