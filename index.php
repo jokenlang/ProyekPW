@@ -84,7 +84,7 @@ if (isset($_POST['detail'])) {
                 <div class="carousel-item active">
                     <img class="d-block w-100" style="height:700px" src="asset/imgSlide1.jpg" alt="First slide">
                     <div class="carousel-caption d-none d-md-block bg-dark mb-4">
-                        <h5>Make your room better</h5>
+                        <h5>Make Your Room Better</h5>
                         <p>We prepare a good furniture to make your room comfortable</p>
                     </div>
                 </div>
@@ -98,7 +98,7 @@ if (isset($_POST['detail'])) {
                 <div class="carousel-item">
                     <img class="d-block w-100" style="height:700px" src="asset/imgSlide3.jpg" alt="Third slide">
                     <div class="carousel-caption d-none d-md-block bg-dark mb-4">
-                        <h5>Best value price with Usability</h5>
+                        <h5>Best Value Price with Usability</h5>
                         <p>Our price are always consistent with the market and the quality of product</p>
                     </div>
                 </div>
