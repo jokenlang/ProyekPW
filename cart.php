@@ -84,9 +84,10 @@ if (isset($_POST['checkout'])) {
                             <td><?= $value['desc_produk'] ?></td>
                             <td>
                                 <form action="" method="POST" class="row">
-                                    <button name="kurangiQty" value="<?= $key ?>" class="btn btn-dark col-3 text-center">-</button>
-                                    <button class="btn col-3 p-1"><?= $value['qty'] ?></button>
-                                    <button name="tambahQty" value="<?= $key ?>" class="btn btn-dark col-3">+</button>
+                                    <button class="btn col-12 p-1 d-lg-none"><?= $value['qty'] ?></button>
+                                    <button name="kurangiQty" value="<?= $key ?>" class="btn btn-dark col-6 col-lg-3 text-center">-</button>
+                                    <button class="btn col-3 p-1 d-none d-lg-block"><?= $value['qty'] ?></button>
+                                    <button name="tambahQty" value="<?= $key ?>" class="btn btn-dark col-6 col-lg-3">+</button>
                                 </form>
                             </td>
                             <td>Rp. <?= number_format($value['subtotal'], 0, '.', '.') ?></td>
@@ -109,6 +110,7 @@ if (isset($_POST['checkout'])) {
 
         <div class="container">
             <form action="" method="POST">
+                <a href="allProduct.php" class="btn btn-info float-left my-3">Continue Shopping</a>
                 <button id="pay-button" name="checkout" value="checkout" class="btn btn-dark float-right my-3">>> Checkout</button>
                 <?php
                 $_SESSION['total'] = $total;
