@@ -68,7 +68,7 @@ if (isset($_POST['logout'])) {
                                         <p class="card-text">Subtotal : <b> Rp. <?= number_format($value['gross_amount'], 0, '.', '.') ?></b></p>
                                         <button name="detailOrder" value="<?= $value['order_id'] ?>" class="btn float-right text-dark" style="color: white;">Detail >> </button>
                                         <?php if (strtoUpper($value['transaction_status']) == "PENDING") { ?>
-                                            <a href="https://simulator.sandbox.midtrans.com/bca/va/index" class="btn btn-info float-right">Pay Now</a>
+                                            <a href="https://simulator.sandbox.midtrans.com/bca/va/index" class="btn btn-info float-right" target="_blank">Pay Now</a>
                                         <?php } ?>
                                     </div>
                                 </div>
