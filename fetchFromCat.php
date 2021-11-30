@@ -32,7 +32,7 @@ $total_filter_data = $statement->rowCount();
 
 $output = "<form method='post'><div class='container'><label class='ml-5'>Total Records - $total_data</label>
 ";
-$output .= "<div class='row'>";
+$output .= "<div class='row justify-content-center'>";
 
 if ($total_data > 0) {
   foreach ($result as $value) {
