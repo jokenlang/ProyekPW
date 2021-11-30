@@ -189,6 +189,13 @@ if (isset($_POST['logout'])) {
                                 <p class="card-text">Time : <?= $value['transaction_time'] ?></p>
                                 <!-- <p class="card-text">Status : <?= strtoUpper($value['transaction_status']) ?></p> -->
                                 <?php
+                                $arrayVA = json_decode($value['va_number'], true);
+                                $bank = strtoUpper($arrayVA[0]['bank']);
+                                $va_number = $arrayVA[0]['va_number'];
+                                ?>
+                                <p class="card-text">Bank : <?= $bank ?></p>
+                                <p class="card-text">Virtual Account Number : <?= $va_number ?></p>
+                                <?php
                                 $kode_user = $value['kode_user'];
                                 $user = $conn->query("SELECT * From user where kode_user = '$kode_user'")->fetch_assoc();
                                 $total_income += $value['gross_amount'];

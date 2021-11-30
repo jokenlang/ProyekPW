@@ -167,7 +167,6 @@ if (isset($_POST['logout'])) {
         <?php } ?>
     </div>
 
-
     <script>
         $("#kategori").change(function() {
             var kode_kategori = $("#kategori").val();

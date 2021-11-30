@@ -57,6 +57,13 @@ if (isset($_POST['logout'])) {
                                         ?>
                                         <h5 class="card-title">Total Items : <?= $total ?></h5>
                                         <p class="card-text">Time : <?= $value['transaction_time'] ?></p>
+                                        <?php
+                                        $arrayVA = json_decode($value['va_number'], true);
+                                        $bank = strtoUpper($arrayVA[0]['bank']);
+                                        $va_number = $arrayVA[0]['va_number'];
+                                        ?>
+                                        <p class="card-text">Bank : <?= $bank ?></p>
+                                        <p class="card-text">Virtual Account Number : <?= $va_number ?></p>
                                         <p class="card-text">Status : <?= strtoUpper($value['transaction_status']) ?></p>
                                         <p class="card-text">Subtotal : <b> Rp. <?= number_format($value['gross_amount'], 0, '.', '.') ?></b></p>
                                         <button name="detailOrder" value="<?= $value['order_id'] ?>" class="btn float-right text-dark" style="color: white;">Detail >> </button>
