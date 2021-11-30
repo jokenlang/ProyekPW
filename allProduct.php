@@ -20,7 +20,7 @@ if (isset($_POST['add'])) {
             $ketemu = true;
             $cart = $_SESSION['cart'];
             $cart[$key]['qty']++;
-            $cart[$key]['subtotal'] = $cart[$key]['qty'] * $cart[$key]['harga_produk']; 
+            $cart[$key]['subtotal'] = $cart[$key]['qty'] * $cart[$key]['harga_produk'];
             $_SESSION['cart'] = $cart;
         }
     }
@@ -66,9 +66,9 @@ if (isset($_POST['detail'])) {
     <?php include('header.php') ?>
 
     <div class="container">
-        <span class="text-dark my-3 font-weight-bold" style="font-size: 2em;">Products</span>
+        <span class="text-dark my-3 ml-5 font-weight-bold" style="font-size: 2em;">Products</span>
         <form class="form-inline my-3" method="POST" style="float: right;">
-            <input class="form-control mr-sm-2" style="float: right; " type="search" placeholder="Search" aria-label="Search" id="search">
+            <input class="form-control mr-sm-2 mr-4" style="float: right; " type="search" placeholder="Search" aria-label="Search" id="search">
             <!-- <button class="btn btn-primary my-2 my-sm-0" type="submit" name="searchName">Search</button> -->
         </form>
     </div>

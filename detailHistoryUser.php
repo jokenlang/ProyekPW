@@ -26,10 +26,11 @@ if (isset($_POST['login'])) {
 <body>
     <?php include('header.php'); ?>
 
-    
+
     <div class="container">
         <a href="historyUser.php">
-            <button type="button" value="back" class="btn btn-light" style="margin-top:25px; background-color:transparent"><< BACK</button>
+            <button type="button" value="back" class="btn btn-light" style="margin-top:25px; background-color:transparent">
+                << BACK</button>
         </a>
         <div class="text-dark my-3 font-weight-bold" style="font-size: 2em;">History Transaction</div>
     </div>
@@ -66,12 +67,14 @@ if (isset($_POST['login'])) {
                         </tr>
                     <?php } ?>
                 <?php } ?>
-                <tr>
-                    <td colspan="3" class="font-weight-bold text-danger" style="text-align: right;">TOTAL</td>
-                    <td class="font-weight-bold h5">Rp. <?= number_format($total, 0, ',', '.') ?></td>
-                </tr>
             </tbody>
         </table>
+
+        <!-- <tr>
+            <td colspan="3" class="font-weight-bold text-danger" style="text-align: right;">TOTAL</td>
+            <td class="font-weight-bold h5">Rp. <?= number_format($total, 0, ',', '.') ?></td>
+        </tr> -->
+        <div class="text-right h3"><b class="text-danger">Total : </b> Rp. <?= number_format($total, 0, ',', '.') ?></div>
     </div>
     <?php include('footer.php'); ?>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

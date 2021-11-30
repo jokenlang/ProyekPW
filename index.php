@@ -84,7 +84,7 @@ if (isset($_POST['detail'])) {
                 <div class="carousel-item active">
                     <img class="d-block w-100" style="height:700px" src="asset/imgSlide1.jpg" alt="First slide">
                     <div class="carousel-caption d-none d-md-block bg-dark mb-4">
-                        <h5>Make your room better</h5>
+                        <h5>Make Your Room Better</h5>
                         <p>We prepare a good furniture to make your room comfortable</p>
                     </div>
                 </div>
@@ -98,7 +98,7 @@ if (isset($_POST['detail'])) {
                 <div class="carousel-item">
                     <img class="d-block w-100" style="height:700px" src="asset/imgSlide3.jpg" alt="Third slide">
                     <div class="carousel-caption d-none d-md-block bg-dark mb-4">
-                        <h5>Best value price with Usability</h5>
+                        <h5>Best Value Price with Usability</h5>
                         <p>Our price are always consistent with the market and the quality of product</p>
                     </div>
                 </div>
@@ -144,9 +144,9 @@ if (isset($_POST['detail'])) {
                         <h5 class='card-title'><?= strtoUpper($value['nama_produk']) ?></h5>
                         <p class='card-text'><?= $value['desc_produk'] ?></p>
                         <p class='card-text font-weight-bold'>Rp. <?= number_format($value['harga_produk'], 0, '.', '.') ?></p>
-                        <form method='post'>
-                            <button href='#' class='btn btn-dark' value="<?= $value['kode_produk'] ?>" name='detail'>Detail</button>
-                            <button href='#' class='btn btn-success' value="<?= $value['kode_produk'] ?>" name='add'>Add to Cart</button>
+                        <form method='post' class="row">
+                            <button href='#' class='btn btn-dark col-12 mb-2' value="<?= $value['kode_produk'] ?>" name='detail'>Detail</button>
+                            <button href='#' class='btn btn-success col-12' value="<?= $value['kode_produk'] ?>" name='add'>Add to Cart</button>
                         </form>
                     </div>
                 </div>

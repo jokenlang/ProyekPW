@@ -33,9 +33,9 @@ $result = $statement->fetchAll();
 $total_filter_data = $statement->rowCount();
 
 
-$output = "<form method='post'><div class='container'><label>Total Records - $total_data</label>
+$output = "<form method='post'><div class='container'><label class='ml-5'>Total Records - $total_data</label>
 ";
-$output .= "<div class='row'>";
+$output .= "<div class='row justify-content-center'>";
 
 if ($total_data > 0) {
   foreach ($result as $value) {
@@ -52,8 +52,8 @@ if ($total_data > 0) {
                         <p class='card-text'>$desc</p>
                         <p class='card-text font-weight-bold'>$harga</p>
                         <form method='post' class='row'>
-                        <button href='#' class='btn btn-dark col-12 col-lg-6' value='$kode' name='detail'>Detail</button>
-                        <button href='#' class='btn btn-success col-12 col-lg-6' value='$kode' name='add'>Add to Cart</button>
+                        <button href='#' class='btn btn-dark col-12 mb-2' value='$kode' name='detail'>Detail</button>
+                        <button href='#' class='btn btn-success col-12' value='$kode' name='add'>Add to Cart</button>
                         </form>
                         </div>
     </div>

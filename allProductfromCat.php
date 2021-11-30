@@ -56,27 +56,12 @@ if (isset($_POST['detail'])) {
     <?php include('header.php') ?>
 
     <div class="container">
-        <span class="text-dark my-3 font-weight-bold" style="font-size: 2em;">Products</span>
+        <span class="text-dark my-3 font-weight-bold ml-5" style="font-size: 2em;">Products</span>
         <form class="form-inline my-3" method="POST" style="float: right;">
             <!-- <input class="form-control mr-sm-2" style="float: right;" type="search" placeholder="Search" aria-label="Search" id="search">
             <button class="btn btn-primary my-2 my-sm-0" type="submit" name="searchName">Search</button> -->
         </form>
     </div>
-
-    <!-- <div class="container">
-        <div class="row">
-            <?php foreach ($produk as $key => $value) { ?>
-                <div class="card col-md-4" style="width: 18rem;">
-                    <img class="card-img-top" src="<?= $value['url_gambar'] ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"><?= $value['nama_produk'] ?></h5>
-                        <p class="card-text"><?= $value['desc_produk'] ?></p>
-                        <a href="#" class="btn btn-primary" value="<?= $value['kode_produk'] ?>">Add to Cart</a>
-                    </div>
-                </div>
-            <?php } ?>
-        </div>
-    </div> -->
 
     <div class="table-responsive" id="dynamic_content">
 

@@ -37,56 +37,56 @@ $transaction_details = array(
     'gross_amount' => $total, // no decimal allowed for creditcard
 );
 
-// Optional
-$item1_details = array(
-    'id' => 'a1',
-    'price' => 18000,
-    'quantity' => 3,
-    'name' => "Apple"
-);
+// // Optional
+// $item1_details = array(
+//     'id' => 'a1',
+//     'price' => 18000,
+//     'quantity' => 3,
+//     'name' => "Apple"
+// );
 
-// Optional
-$item2_details = array(
-    'id' => 'a2',
-    'price' => 20000,
-    'quantity' => 2,
-    'name' => "Orange"
-);
+// // Optional
+// $item2_details = array(
+//     'id' => 'a2',
+//     'price' => 20000,
+//     'quantity' => 2,
+//     'name' => "Orange"
+// );
 
 // Optional
 //$item_details = array($item1_details, $item2_details);
 
 // Optional
-$billing_address = array(
-    'first_name'    => "Andri",
-    'last_name'     => "Litani",
-    'address'       => "Mangga 20",
-    'city'          => "Jakarta",
-    'postal_code'   => "16602",
-    'phone'         => "081122334455",
-    'country_code'  => 'IDN'
-);
+// $billing_address = array(
+//     'first_name'    => "Andri",
+//     'last_name'     => "Litani",
+//     'address'       => "Mangga 20",
+//     'city'          => "Jakarta",
+//     'postal_code'   => "16602",
+//     'phone'         => "081122334455",
+//     'country_code'  => 'IDN'
+// );
 
-// Optional
-$shipping_address = array(
-    'first_name'    => "Obet",
-    'last_name'     => "Supriadi",
-    'address'       => "Manggis 90",
-    'city'          => "Jakarta",
-    'postal_code'   => "16601",
-    'phone'         => "08113366345",
-    'country_code'  => 'IDN'
-);
+// // Optional
+// $shipping_address = array(
+//     'first_name'    => "Obet",
+//     'last_name'     => "Supriadi",
+//     'address'       => "Manggis 90",
+//     'city'          => "Jakarta",
+//     'postal_code'   => "16601",
+//     'phone'         => "08113366345",
+//     'country_code'  => 'IDN'
+// );
 
-// Optional
-$customer_details = array(
-    'first_name'    => "Andri",
-    'last_name'     => "Litani",
-    'email'         => "andri@litani.com",
-    'phone'         => "081122334455",
-    'billing_address'  => $billing_address,
-    'shipping_address' => $shipping_address
-);
+// // Optional
+// $customer_details = array(
+//     'first_name'    => "Andri",
+//     'last_name'     => "Litani",
+//     'email'         => "andri@litani.com",
+//     'phone'         => "081122334455",
+//     'billing_address'  => $billing_address,
+//     'shipping_address' => $shipping_address
+// );
 
 // Optional, remove this to display all available payment methods
 $enable_payments = array('bca_va', 'mandiri_clickpay', 'echannel');
@@ -155,7 +155,7 @@ function printExampleWarningMessage()
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Confirmation</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 
@@ -171,7 +171,7 @@ function printExampleWarningMessage()
                             <th scope="col">Merk</th>
                             <th scope="col" class="d-none d-md-block">Desc</th>
                             <th scope="col-5">Qty</th>
-                            <th scope="col">Subtotal</th>
+                            <th scope="col" class="text-right text-md-left">Subtotal</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -189,16 +189,12 @@ function printExampleWarningMessage()
                                     </td>
                                     <td class="d-none d-md-block"><?= $value['desc_produk'] ?></td>
                                     <td><?= $value['qty'] ?></td>
-                                    <td>Rp. <?= number_format($value['subtotal'], 0, '.', '.') ?></td>
+                                    <td class="text-right text-md-left">Rp. <?= number_format($value['subtotal'], 0, '.', '.') ?></td>
                                     <?php $total += $value['subtotal']; ?>
                                     <?php $total_item += $value['qty']; ?>
                                 </tr>
                             <?php } ?>
                         <?php } ?>
-                        <tr>
-                            <td colspan="3" class="font-weight-bold text-danger" style="text-align:right">TOTAL</td>
-                            <td class="font-weight-bold h5">Rp. <?= number_format($total, 0, ',', '.') ?></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>

@@ -54,12 +54,9 @@ $dtrans = $conn->query("SELECT * From dtrans where order_id = '$order_id'")->fet
                         </tr>
                     <?php } ?>
                 <?php } ?>
-                <tr>
-                    <td colspan="3" class="font-weight-bold text-danger" style="text-align: right;">TOTAL</td>
-                    <td class="font-weight-bold h5">Rp. <?= number_format($total, 0, ',', '.') ?></td>
-                </tr>
             </tbody>
         </table>
+        <div class="text-right h3"><b class="text-danger">Total : </b> Rp. <?= number_format($total, 0, ',', '.') ?></div>
     </div>
     <?php include('footer.php'); ?>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
