@@ -8,7 +8,7 @@ if (isset($_POST['detailOrder'])) {
     header('Location:detailHistoryUser.php');
 }
 
-if(isset($_POST['login'])){
+if (isset($_POST['login'])) {
     header('Location: login.php');
 }
 if (isset($_POST['logout'])) {
@@ -60,6 +60,9 @@ if (isset($_POST['logout'])) {
                                         <p class="card-text">Status : <?= strtoUpper($value['transaction_status']) ?></p>
                                         <p class="card-text">Subtotal : <b> Rp. <?= number_format($value['gross_amount'], 0, '.', '.') ?></b></p>
                                         <button name="detailOrder" value="<?= $value['order_id'] ?>" class="btn float-right text-dark" style="color: white;">Detail >> </button>
+                                        <?php if (strtoUpper($value['transaction_status']) == "PENDING") { ?>
+                                            <a href="https://simulator.sandbox.midtrans.com/bca/va/index" class="btn btn-info float-right">Pay Now</a>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             <?php } ?>
