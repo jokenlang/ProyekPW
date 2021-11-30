@@ -60,6 +60,11 @@ if (isset($_POST['cancel'])) {
     unset($_SESSION['idxProduk']);
     header('Location:allProduct.php');
 }
+if (isset($_POST['logout'])) {
+    unset($_SESSION['idxUser']);
+    unset($_SESSION['cart']);
+    header('Location:index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

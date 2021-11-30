@@ -11,6 +11,11 @@ if (isset($_POST['login'])) {
     header('Location:login.php');
     // http_redirect('login.php');
 }
+if (isset($_POST['logout'])) {
+    unset($_SESSION['idxUser']);
+    unset($_SESSION['cart']);
+    header('Location:index.php');
+}
 if (isset($_POST['remove'])) {
     $key = $_POST['remove'];
     unset($_SESSION['cart'][$key]);

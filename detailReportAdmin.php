@@ -2,6 +2,11 @@
 require_once('connection.php');
 $order_id = $_SESSION['order_id'];
 $dtrans = $conn->query("SELECT * From dtrans where order_id = '$order_id'")->fetch_all(MYSQLI_ASSOC);
+if (isset($_POST['logout'])) {
+    unset($_SESSION['idxUser']);
+    unset($_SESSION['cart']);
+    header('Location:index.php');
+}
 ?>
 
 <!DOCTYPE html>
