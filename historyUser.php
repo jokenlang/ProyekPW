@@ -8,7 +8,7 @@ if (isset($_POST['detailOrder'])) {
     header('Location:detailHistoryUser.php');
 }
 
-if (isset($_POST['login'])) {
+if(isset($_POST['login'])){
     header('Location: login.php');
 }
 ?>
@@ -35,29 +35,31 @@ if (isset($_POST['login'])) {
             <?php if ($htrans != null) { ?>
                 <?php foreach ($htrans as $key => $value) { ?>
                     <div class="card my-2" style="border-radius: 20px;">
-                        <?php if (strtoUpper($value['transaction_status']) == "SETTLEMENT") { ?>
-                            <div class="card-header bg-success text-light" style="border-radius:18px;">
-                            <?php } else { ?>
-                                <div class="card-header bg-danger text-light" style="border-radius:18px;">
-                                <?php } ?>
-                                Order ID : <?= $value['order_id'] ?>
+                        <?php if (strtoUpper($value['transaction_status']) == "PENDING") { ?>
+                            <div class="card-header bg-danger text-light" style="border-radius:18px;">
+                            <?php } else if (strtoUpper($value['transaction_status']) == "EXPIRE") { ?>
+                                <div class="card-header bg-dark text-light" style="border-radius:18px;">
+                                <?php } else { ?>
+                                    <div class="card-header bg-success text-light" style="border-radius:18px;">
+                                    <?php } ?>
+                                    Order ID : <?= $value['order_id'] ?>
+                                    </div>
+                                    <div class="card-body">
+                                        <?php
+                                        $order_id = $value['order_id'];
+                                        $dtrans = $conn->query("SELECT * From dtrans where order_id = '$order_id'")->fetch_all(MYSQLI_ASSOC);
+                                        $total = count($dtrans);
+                                        ?>
+                                        <h5 class="card-title">Total Items : <?= $total ?></h5>
+                                        <p class="card-text">Time : <?= $value['transaction_time'] ?></p>
+                                        <p class="card-text">Status : <?= strtoUpper($value['transaction_status']) ?></p>
+                                        <p class="card-text">Subtotal : <b> Rp. <?= number_format($value['gross_amount'], 0, '.', '.') ?></b></p>
+                                        <button name="detailOrder" value="<?= $value['order_id'] ?>" class="btn float-right text-dark" style="color: white;">Detail >> </button>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <?php
-                                    $order_id = $value['order_id'];
-                                    $dtrans = $conn->query("SELECT * From dtrans where order_id = '$order_id'")->fetch_all(MYSQLI_ASSOC);
-                                    $total = count($dtrans);
-                                    ?>
-                                    <h5 class="card-title">Total Items : <?= $total ?></h5>
-                                    <p class="card-text">Time : <?= $value['transaction_time'] ?></p>
-                                    <p class="card-text">Status : <?= strtoUpper($value['transaction_status']) ?></p>
-                                    <p class="card-text">Subtotal : <b> Rp. <?= number_format($value['gross_amount'], 0, '.', '.') ?></b></p>
-                                    <button name="detailOrder" value="<?= $value['order_id'] ?>" class="btn float-right text-dark" style="color: white;">Detail >> </button>
-                                </div>
-                            </div>
+                            <?php } ?>
                         <?php } ?>
-                    <?php } ?>
-                    </div>
+                            </div>
     </form>
 
     <?php include('footer.php'); ?>

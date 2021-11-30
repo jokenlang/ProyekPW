@@ -42,10 +42,6 @@ if (isset($_POST['checkout'])) {
         header('Location:login.php');
     }
 }
-
-if (isset($_POST['continue'])) {
-    header('Location:allProduct.php');
-}
 ?>
 
 <!DOCTYPE html>
@@ -113,7 +109,6 @@ if (isset($_POST['continue'])) {
 
         <div class="container">
             <form action="" method="POST">
-                <button id="" name="continue" value="continue" class="btn btn-secondary float-left my-3">Continue Shopping</button>
                 <button id="pay-button" name="checkout" value="checkout" class="btn btn-dark float-right my-3">>> Checkout</button>
                 <?php
                 $_SESSION['total'] = $total;
