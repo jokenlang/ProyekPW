@@ -35,7 +35,7 @@ $total_filter_data = $statement->rowCount();
 
 $output = "<form method='post'><div class='container'><label>Total Records - $total_data</label>
 ";
-$output .= "<div class='row px-2'>";
+$output .= "<div class='row'>";
 
 if ($total_data > 0) {
   foreach ($result as $value) {
@@ -51,9 +51,9 @@ if ($total_data > 0) {
                         <h5 class='card-title'>$nama</h5>
                         <p class='card-text'>$desc</p>
                         <p class='card-text font-weight-bold'>$harga</p>
-                        <form method='post'>
-                        <button href='#' class='btn btn-dark' value='$kode' name='detail'>Detail</button>
-                        <button href='#' class='btn btn-success' value='$kode' name='add'>Add to Cart</button>
+                        <form method='post' class='row'>
+                        <button href='#' class='btn btn-dark col-12 col-lg-6' value='$kode' name='detail'>Detail</button>
+                        <button href='#' class='btn btn-success col-12 col-lg-6' value='$kode' name='add'>Add to Cart</button>
                         </form>
                         </div>
     </div>
@@ -74,7 +74,7 @@ $output .= "
 <br />
 <div align='right'>
   <div class='container'>
-  <ul class='pagination float-right'>
+  <ul class='pagination justify-content-center'>
 ";
 
 $total_links = ceil($total_data / $limit);
