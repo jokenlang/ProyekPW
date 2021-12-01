@@ -88,11 +88,11 @@ if (isset($_POST['checkout'])) {
                             </td>
                             <td><?= $value['desc_produk'] ?></td>
                             <td>
-                                <form action="" method="POST" class="row">
+                                <form action="" method="POST" class="row justify-content-center">
                                     <button class="btn col-12 p-1 d-lg-none"><?= $value['qty'] ?></button>
-                                    <button name="kurangiQty" value="<?= $key ?>" class="btn btn-dark col-6 col-lg-3 text-center">-</button>
+                                    <button name="kurangiQty" value="<?= $key ?>" class="btn btn-dark col-5 mr-1 mx-lg-0 col-lg-3 text-center">-</button>
                                     <button class="btn col-3 p-1 d-none d-lg-block"><?= $value['qty'] ?></button>
-                                    <button name="tambahQty" value="<?= $key ?>" class="btn btn-dark col-6 col-lg-3">+</button>
+                                    <button name="tambahQty" value="<?= $key ?>" class="btn btn-dark col-5 col-lg-3 text-center">+</button>
                                 </form>
                             </td>
                             <td>Rp. <?= number_format($value['subtotal'], 0, '.', '.') ?></td>
