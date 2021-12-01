@@ -69,7 +69,7 @@ if (isset($_POST['logout'])) {
                 <?php } ?>
             </tbody>
         </table>
-        <div class="text-right h3"><b class="text-danger">Total : </b> Rp. <?= number_format($total, 0, ',', '.') ?></div>
+        <div class="text-right h3 mb-3"><b class="text-danger">Total : </b> Rp. <?= number_format($total, 0, ',', '.') ?></div>
     </div>
     <?php include('footer.php'); ?>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
