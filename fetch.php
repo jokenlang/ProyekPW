@@ -86,6 +86,7 @@ $page_link = '';
 
 if ($total_links > 5) {
   if ($page < 5) {
+    //untuk page yang jumlahnya 5
     for ($count = 1; $count <= 5; $count++) {
       $page_array[] = $count;
     }
@@ -94,12 +95,14 @@ if ($total_links > 5) {
   } else {
     $end_limit = $total_links - 5;
     if ($page > $end_limit) {
+      //page 5 terakhir
       $page_array[] = 1;
       $page_array[] = '...';
       for ($count = $end_limit; $count <= $total_links; $count++) {
         $page_array[] = $count;
       }
     } else {
+      //page tengah"
       $page_array[] = 1;
       $page_array[] = '...';
       for ($count = $page - 1; $count <= $page + 1; $count++) {
@@ -118,6 +121,7 @@ if ($total_links > 5) {
 if ($total_data > 0) {
   for ($count = 0; $count < count($page_array); $count++) {
     if ($page == $page_array[$count]) {
+      //untuk yg aktif
       $page_link .= '
       <li class="page-item active">
         <a class="page-link" href="#">' . $page_array[$count] . ' <span class="sr-only">(current)</span></a>
@@ -128,6 +132,7 @@ if ($total_data > 0) {
       if ($previous_id > 0) {
         $previous_link = '<li class="page-item"><a class="page-link" href="#" data-page_number="' . $previous_id . '">Previous</a></li>';
       } else {
+        //kalau sdh 0 prevnya mati
         $previous_link = '
         <li class="page-item disabled">
           <a class="page-link" href="#">Previous</a>
@@ -136,6 +141,7 @@ if ($total_data > 0) {
       }
       $next_id = $page_array[$count] + 1;
       if ($next_id > $total_links) {
+        //kalau sdh page terakhir next mati
         $next_link = '
         <li class="page-item disabled">
           <a class="page-link" href="#">Next</a>
@@ -146,12 +152,14 @@ if ($total_data > 0) {
       }
     } else {
       if ($page_array[$count] == '...') {
+        //tampilkan ...
         $page_link .= '
         <li class="page-item disabled">
             <a class="page-link" href="#">...</a>
         </li>
         ';
       } else {
+        //tampilkan angka biasa
         $page_link .= '
         <li class="page-item"><a class="page-link" href="#" data-page_number="' . $page_array[$count] . '">' . $page_array[$count] . '</a></li>
         ';
