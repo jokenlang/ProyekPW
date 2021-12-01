@@ -115,12 +115,11 @@ if (isset($_POST['checkout'])) {
 
         <div class="container">
             <form action="" method="POST">
-                <a href="allProduct.php" class="btn btn-info float-left my-3">Continue Shopping</a>
+                <a href="allProduct.php" class="btn btn-secondary float-left my-3">Continue Shopping</a>
                 <button id="pay-button" name="checkout" value="checkout" class="btn btn-dark float-right my-3">>> Checkout</button>
                 <?php
                 $_SESSION['total'] = $total;
                 ?>
-                <!-- <input type="hidden" name="amount" value="<?= $total ?>"> -->
             </form>
         </div>
         <div style="clear:both"></div>
