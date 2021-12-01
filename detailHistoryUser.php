@@ -3,7 +3,8 @@ require_once('connection.php');
 $idxUser = $_SESSION['idxUser'];
 $order_id = $_SESSION['order_id'];
 $dtrans = $conn->query("SELECT * From dtrans where order_id = '$order_id'")->fetch_all(MYSQLI_ASSOC);
-
+$htrans = $conn->query("SELECT * From htrans h,user u where h.kode_user = u.kode_user and order_id = '$order_id'")->fetch_assoc();
+$arrayVA = json_decode($htrans['va_number'], true);
 if (isset($_POST['login'])) {
     // echo("test");
     header('Location:login.php');
@@ -32,12 +33,17 @@ if (isset($_POST['logout'])) {
     <?php include('header.php'); ?>
 
 
-    <div class="container">
+    <div class="container font-weight-bold">
         <a href="historyUser.php">
             <button type="button" value="back" class="btn btn-light" style="margin-top:25px; background-color:transparent">
                 << BACK</button>
         </a>
-        <div class="text-dark my-3 font-weight-bold" style="font-size: 2em;">History Transaction</div>
+        <div class="text-dark my-3 h2" style="font-size: 2em;">History Transaction</div>
+        <div class="text-dark mb-3 card-text">Order ID : <?= $order_id ?></div>
+        <div class="text-dark mb-3 card-text">Time : <?= $htrans['transaction_time'] ?></div>
+        <div class="text-dark mb-3 card-text">Bank : <?= strtoUpper($arrayVA[0]['bank']) ?></div>
+        <div class="text-dark mb-3 card-text">Virtual Account Number : <?= $arrayVA[0]['va_number'] ?></div>
+        <div class="text-dark mb-3 card-text">Customer : <?= strtoUpper($htrans['nama_user']) ?></div>
     </div>
 
     <div class="container">
@@ -80,11 +86,10 @@ if (isset($_POST['logout'])) {
             <td class="font-weight-bold h5">Rp. <?= number_format($total, 0, ',', '.') ?></td>
         </tr> -->
 
-            <div class="text-right h3""><b class="text-danger">Total : </b> Rp. <?= number_format($total, 0, ',', '.') ?></
-    </div>
-    <?php include('footer.php'); ?>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+        <div class="text-right h3""><b class=" text-danger">Total : </b> Rp. <?= number_format($total, 0, ',', '.') ?></ </div>
+            <?php include('footer.php'); ?>
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </body>
 
 </html>

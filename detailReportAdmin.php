@@ -2,6 +2,9 @@
 require_once('connection.php');
 $order_id = $_SESSION['order_id'];
 $dtrans = $conn->query("SELECT * From dtrans where order_id = '$order_id'")->fetch_all(MYSQLI_ASSOC);
+$htrans = $conn->query("SELECT * From htrans h,user u where h.kode_user = u.kode_user and order_id = '$order_id'")->fetch_assoc();
+$arrayVA = json_decode($htrans['va_number'], true);
+
 if (isset($_POST['logout'])) {
     unset($_SESSION['idxUser']);
     unset($_SESSION['cart']);
@@ -23,8 +26,13 @@ if (isset($_POST['logout'])) {
 
 <body>
     <?php include('headerAdmin.php'); ?>
-    <div class="container">
-        <div class="text-dark my-3 font-weight-bold" style="font-size: 2em;">History Transaction</div>
+    <div class="container font-weight-bold">
+        <div class="text-dark my-3 h2" style="font-size: 2em;">History Transaction</div>
+        <div class="text-dark mb-3 card-text">Order ID : <?= $order_id ?></div>
+        <div class="text-dark mb-3 card-text">Time : <?= $htrans['transaction_time'] ?></div>
+        <div class="text-dark mb-3 card-text">Bank : <?= strtoUpper($arrayVA[0]['bank']) ?></div>
+        <div class="text-dark mb-3 card-text">Virtual Account Number : <?= $arrayVA[0]['va_number'] ?></div>
+        <div class="text-dark mb-3 card-text">Customer : <?= strtoUpper($htrans['nama_user']) ?></div>
     </div>
 
     <div class="container">
